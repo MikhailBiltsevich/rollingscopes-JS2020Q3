@@ -317,6 +317,21 @@ button:hover {
     border-radius: 0;
 }
 
+.subscribe input:-webkit-input-placeholder {
+    opacity: .5;
+    color: #373737;
+}
+
+.subscribe input:-moz-placeholder {
+    opacity: .5;
+    color: #373737;
+}
+
+.subscribe input:-ms-input-placeholder {
+    opacity: .5;
+    color: #373737;
+}
+
 .subscribe h2 {
     margin-top: 200px;
     font-style: normal;
