@@ -89,10 +89,7 @@ h1 {
     line-height: 140%;
 }
 
-
 button {
-    margin-top: 30px;
-    padding: 15px 47px;
     background: #00AFDB;
     text-transform: uppercase;
     font-weight: bold;
@@ -103,6 +100,11 @@ button {
     border: none;
     cursor: pointer;
     outline: none;
+}
+
+button.default {
+    margin-top: 30px;
+    padding: 15px 47px;
 }
 
 button:hover {
@@ -243,7 +245,7 @@ button:hover {
 }
 
 .community .info .text {
-    margin-top: 10px;
+    margin-top: 11px;
     text-align: center;
     font-style: normal;
     font-weight: normal;
@@ -323,9 +325,7 @@ button:hover {
     color: #FFFFFF;
 }
 
-.subscribe button {
-    margin: 0;
-    padding: 0;
+.subscribe button[type="submit"] {
     height: 46px;
     width: 66px;
     color: #fff;
@@ -338,3 +338,68 @@ button:hover {
     flex-wrap: nowrap;
     align-items: flex-start;
 }
+
+.download {
+    height: 464px;
+    background: #F5F6F7;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.download h2 {
+    margin-top: 120px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #373737;
+}
+
+.download .text {
+    margin-top: 22px;
+    max-width: 480px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #4E4E4E;
+}
+
+.download .buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.download .buttons button:first-child {
+    margin-right: 30px;
+}
+
+.download .buttons button {
+    max-width: 186px;
+    height: 46px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.download .buttons button div:first-child {
+    min-width: 127px;
+    text-align: center;
+} 
+
+.download .buttons button div:last-child {
+    min-width: 59px;
+    height: 100%;
+    background-color: #009CC2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
