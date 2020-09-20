@@ -310,6 +310,7 @@ button:hover {
     font-size: 14px;
     outline: none;
     color: #373737;
+    border-radius: 0;
 }
 
 .subscribe h2 {
@@ -330,6 +331,7 @@ button:hover {
     height: 46px;
     width: 66px;
     color: #fff;
+    border-radius: 0;
 }
 
 .subscribe form {
