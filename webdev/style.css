@@ -214,6 +214,10 @@ button:hover {
     cursor: pointer;
 }
 
+.community .position .next:hover, .community .position .prev:hover {
+    opacity: .5;
+}
+
 .community .position div {
     display: inline-block;
     font-style: normal;
