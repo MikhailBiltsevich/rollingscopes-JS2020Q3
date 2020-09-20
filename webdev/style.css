@@ -340,7 +340,7 @@ button:hover {
 }
 
 .download {
-    height: 464px;
+    min-height: 464px;
     background: #F5F6F7;
     display: flex;
     flex-wrap: nowrap;
@@ -370,7 +370,7 @@ button:hover {
 }
 
 .download .buttons {
-    margin-top: 30px;
+    margin-top: 28px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -402,4 +402,52 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-} 
+}
+
+footer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 185px;
+    background: #000000;
+    padding: 60px 160px 80px 160px;
+}
+
+footer img {
+    margin-right: 67px;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+}
+
+footer ul li + li:before { 
+    content: "";
+    font-size: 8px;
+    border-left: 1px solid #4E4E4E;
+    margin: 0 20px;
+    font-weight: bold;
+    color: #4E4E4E;
+}
+
+footer ul li {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+footer span {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #818181;
+    margin-top: 3px;
+}
