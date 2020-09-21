@@ -16,7 +16,7 @@ a {
 
 .header {
     height: 744px;
-    background: url(/assets/img/bg-laptop.jpg) center center/cover no-repeat;
+    background: url(assets/img/bg-laptop.jpg) center center/cover no-repeat;
 }
 
 header>h1 {
@@ -317,7 +317,7 @@ button:hover {
 
 .subscribe {
     height: 524px;
-    background: url(/assets/img/bg-programming.jpg) top center/cover no-repeat;
+    background: url(assets/img/bg-programming.jpg) top center/cover no-repeat;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -485,7 +485,7 @@ footer ul {
 }
 
 footer ul li + li:before { 
-    content: url(/assets/icons/menu-items-divider.svg);
+    content: url(assets/icons/menu-items-divider.svg);
     margin: 0 18px;
 }
 
