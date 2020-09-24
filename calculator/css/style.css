@@ -15,7 +15,7 @@ body {
     align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(140px, auto) repeat(5, 100px);
+    grid-template-rows: minmax(140px, auto) minmax(60px, auto) repeat(5, 100px);
 }
 
 .calculator-grid > button {
@@ -23,11 +23,15 @@ body {
     font-size: 2rem;
     border: 1px solid rgba(0, 0, 0, .45);
     outline: none;
-    background-color: rgba(255, 255, 255, .25);
+    background-color: rgba(255, 255, 255, .35);
 }
   
 .calculator-grid > button:hover {
     background-color: rgba(255, 255, 255, .5);
+}
+
+button[data-number] {
+    background-color: rgba(255, 255, 255, .15);
 }
 
 .output {
@@ -50,4 +54,8 @@ body {
 .output .current-operand {
     color: white;
     font-size: 2.5rem;
+}
+
+.span-two {
+    grid-column: span 2;
 }
