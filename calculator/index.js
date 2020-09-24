@@ -5,6 +5,7 @@ const previousOperandElement = document.querySelector("[data-previous-operand]")
 const currentOperandElement = document.querySelector("[data-current-operand]")
 const allClearElement = document.querySelector("[data-all-clear]");
 const deleteElement = document.querySelector("[data-delete]");
+const unaryOperationElements = document.querySelectorAll("[data-unary-operation]");
 
 class Calculator {
     constructor(previousOperandElement, currentOperandElement) {
@@ -17,6 +18,7 @@ class Calculator {
         this.currentOperand = '';
         this.previousOperand = '';
         this.operation = undefined;
+        this.isResetRequired = false;
     }
 
     delete() {
@@ -56,14 +58,19 @@ class Calculator {
             this.operation = operation;
     }
 
-    computeUnaryOperation() {
+    computeUnaryOperation(operation) {
+        if (this.currentOperand === '') {
+            return;
+        }
+
         let result;
         const current = parseFloat(this.currentOperand);
 
-        switch(this.operation) {
+        switch(operation) {
             case '√':
                 if (current < 0) {
-                    result = '';
+                    result = 'Введены некорректные данные';
+                    this.isResetRequired = true;
                     break;
                 }
                 result = Math.sqrt(current);
@@ -106,6 +113,7 @@ class Calculator {
                 return;
         }
 
+        this.isResetRequired = true;
         this.currentOperand = result.toString();
         this.previousOperand = '';
         this.operation = undefined;
@@ -126,6 +134,10 @@ const calculator = new Calculator(previousOperandElement, currentOperandElement)
 
 numberElements.forEach(element => {
     element.addEventListener("click", () => {
+        if (calculator.isResetRequired && calculator.currentOperand !== '') {
+            calculator.currentOperand = '';
+            calculator.isResetRequired = false;
+        }
         calculator.appendNumber(element.innerText);
         calculator.updateOutput();
     });
@@ -144,6 +156,13 @@ allClearElement.addEventListener('click', () => {
 operationElements.forEach(element => {
     element.addEventListener('click', () => {
         calculator.setOperation(element.innerText);
+        calculator.updateOutput();
+    });
+});
+
+unaryOperationElements.forEach(element => {
+    element.addEventListener('click', () => {
+        calculator.computeUnaryOperation(element.innerText);
         calculator.updateOutput();
     });
 });
