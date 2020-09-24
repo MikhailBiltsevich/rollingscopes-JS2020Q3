@@ -22,6 +22,11 @@ class Calculator {
     }
 
     delete() {
+        if (!/\d+\.?/.test(this.currentOperand)) {
+            this.currentOperand = '';
+            return;
+        }
+
         this.currentOperand = this.currentOperand.slice(0, -1);
     }
 
@@ -53,6 +58,8 @@ class Calculator {
             if (this.previousOperand !== '') {
                 this.computeBinaryOperation();
             }
+
+            this.isResetRequired = false;
             this.previousOperand = this.currentOperand;
             this.currentOperand = '';
             this.operation = operation;
