@@ -22,7 +22,7 @@ class Calculator {
     }
 
     delete() {
-        if (!/\d+\.?/.test(this.currentOperand)) {
+        if (!/\d+\.?/.test(this.currentOperand) || /^-\d$/.test(this.currentOperand)) {
             this.currentOperand = '';
             return;
         }
