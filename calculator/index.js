@@ -76,9 +76,9 @@ class Calculator {
         switch(operation) {
             case '√':
                 if (current < 0) {
-                    result = 'Введены некорректные данные';
+                    this.currentOperand = 'Введены некорректные данные';
                     this.isResetRequired = true;
-                    break;
+                    return;
                 }
                 result = Math.sqrt(current);
                 break;
@@ -131,6 +131,10 @@ class Calculator {
     }
 
     formatNumber(number) {
+        if(isNaN(parseFloat(number))) {
+            return number;
+        }
+
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
         const decimalDigits = stringNumber.split('.')[1];
