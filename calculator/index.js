@@ -22,7 +22,7 @@ class Calculator {
     }
 
     delete() {
-        if (!/\d+\.?/.test(this.currentOperand) || /^-\d$/.test(this.currentOperand)) {
+        if (!/\d+\.?/.test(this.currentOperand) || /^-\d$/.test(this.currentOperand) || /^\d\.$/.test(this.currentOperand)) {
             this.currentOperand = '';
             return;
         }
@@ -130,12 +130,32 @@ class Calculator {
         return parseFloat(number.toFixed(10)).toString();
     }
 
-    updateOutput() {
-        this.currentOperandElement.innerText = this.currentOperand;
-        if (this.operation == undefined) {
-            this.previousOperandElement.innerText = this.previousOperand.toString();
+    formatNumber(number) {
+        const stringNumber = number.toString();
+        const integerDigits = parseFloat(stringNumber.split('.')[0]);
+        const decimalDigits = stringNumber.split('.')[1];
+        let integerDisplay;
+        
+        if (isNaN(integerDigits)) {
+            integerDisplay = '';
         } else {
-            this.previousOperandElement.innerText = `${this.previousOperand} ${this.operation}`;
+            integerDisplay = integerDigits.toLocaleString('ru', { maximumFractionDigits: 0 });
+        }
+
+        if (decimalDigits != null) {
+          return `${integerDisplay}.${decimalDigits}`;
+        } else {
+          return integerDisplay;
+        }
+      }
+
+    updateOutput() {
+        this.currentOperandElement.innerText = this.formatNumber(this.currentOperand);
+        if (this.operation == undefined) {
+            this.previousOperandElement.innerText = this.formatNumber(this.previousOperand);
+        } else {
+            const operation = this.operation === 'xn' ? '^' : this.operation;
+            this.previousOperandElement.innerText = `${this.formatNumber(this.previousOperand)} ${operation}`;
         }
         
     }
