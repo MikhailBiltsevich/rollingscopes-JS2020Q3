@@ -89,7 +89,7 @@ class Calculator {
                 return;
         }
 
-        this.currentOperand = result.toString();
+        this.currentOperand = this.fixFloatNumber(result);
     }
 
     computeBinaryOperation() {
@@ -121,9 +121,13 @@ class Calculator {
         }
 
         this.isResetRequired = true;
-        this.currentOperand = result.toString();
+        this.currentOperand = this.fixFloatNumber(result);
         this.previousOperand = '';
         this.operation = undefined;
+    }
+
+    fixFloatNumber(number) {
+        return parseFloat(number.toFixed(10)).toString();
     }
 
     updateOutput() {
