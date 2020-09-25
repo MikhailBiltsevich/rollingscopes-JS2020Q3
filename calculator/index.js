@@ -48,7 +48,7 @@ class Calculator {
     }
 
     setOperation(operation) {
-        if (this.currentOperand === '') {
+        if (this.currentOperand === '' || isNaN(parseFloat(this.currentOperand))) {
             if (this.previousOperand !== '' && this.operation !== undefined) {
                 this.operation = operation;
             }
@@ -66,7 +66,7 @@ class Calculator {
     }
 
     computeUnaryOperation(operation) {
-        if (this.currentOperand === '') {
+        if (this.currentOperand === '' || isNaN(parseFloat(this.currentOperand))) {
             return;
         }
 
@@ -81,6 +81,7 @@ class Calculator {
                     return;
                 }
                 result = Math.sqrt(current);
+                this.isResetRequired = true;
                 break;
             case '±':
                 result = -current;
