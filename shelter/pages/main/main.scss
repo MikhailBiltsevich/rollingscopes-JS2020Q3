@@ -89,7 +89,7 @@ $color-dark-m: #B2B2B2;
     color: $color-dark-s;
 
     &:hover {
-        border-bottom: 3px solid $color-primary-color;
+        color: $color-light-s;
         cursor: pointer;
     }
 }

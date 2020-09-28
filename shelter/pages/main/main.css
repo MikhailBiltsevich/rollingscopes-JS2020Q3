@@ -78,7 +78,7 @@
   color: #CDCDCD;
 }
 .list-link-disabled:hover {
-  border-bottom: 3px solid #F1CDB3;
+  color: #FAFAFA;
   cursor: pointer;
 }
 
