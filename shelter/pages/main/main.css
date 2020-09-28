@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100vw;
+  position: absolute;
+  top: 60px;
+}
+
+.wrapper {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  max-width: 1200px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  margin-top: 1px;
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 110%;
+  letter-spacing: 0.12rem;
+  color: #F1CDB3;
+}
+
+.logo-subtitle {
+  margin-top: 9px;
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.08195rem;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu-list {
+  width: 443px;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding-bottom: 1px;
+}
+
+.menu-list-item {
+  display: flex;
+  align-items: center;
+}
+
+.list-link {
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 0.9375rem;
+  line-height: 160%;
+  min-height: 27px;
+}
+
+.list-link-enabled {
+  color: #FAFAFA;
+  border-bottom: 3px solid #F1CDB3;
+  cursor: default;
+}
+
+.list-link-disabled {
+  color: #CDCDCD;
+}
+.list-link-disabled:hover {
+  border-bottom: 3px solid #F1CDB3;
+  cursor: pointer;
+}
+
+.main {
+  width: 100vw;
+}
+
+.hero {
+  padding-top: 180px;
+  background: url(/assets/noise_transparent.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+}
+
+.hero-content {
+  padding-top: 163px;
+  max-width: 460px;
+}
+
+.hero-title {
+  max-width: 19.375rem;
+  color: #FFFFFF;
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 44px;
+  line-height: 130%;
+}
+
+.hero-text {
+  margin-top: 42px;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 160%;
+  color: #CDCDCD;
+}
+
+.hero-button {
+  background-color: #F1CDB3;
+  padding: 15px 45px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  margin-top: 41px;
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+}
+.hero-button:hover {
+  background-color: #FDDCC4;
+  cursor: pointer;
+}
