@@ -146,3 +146,167 @@ $color-dark-m: #B2B2B2;
         cursor: pointer;
     }
 }
+
+.about {
+    padding-top: 80px;
+    padding-bottom: 100px;
+    background-color: $color-light-xl;
+
+    .wrapper {
+        padding: 0 175px;
+    }
+}
+
+.about-content {
+    margin-top: 14px;
+    max-width: 430px;
+
+    .title {
+        max-width: 370px;
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 35px;
+        line-height: 130%;
+        letter-spacing: 0.06em;
+        color: $color-dark-l;
+    }
+
+    .text {
+        p {
+            margin-top: 25px;
+            font-family: Arial;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 160%;
+            color: $color-dark-xl;
+        }
+    }
+}
+
+.friends {
+    background-color: $color-light-l;
+    padding-top: 80px;
+    padding-bottom: 100px;
+
+    .title {
+        max-width: 400px;
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 35px;
+        line-height: 130%;
+        text-align: center;
+        letter-spacing: 0.06em;
+        color: $color-dark-l;
+    }
+
+    .wrapper {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .slider {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            align-self: stretch;
+        }
+
+        .friends-button {
+            margin-top: 60px;
+            background-color: $color-primary-color;
+            font-family: Georgia;
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 130%;
+            color: $color-dark-3xl;
+            letter-spacing: 0.06em;
+            outline: none;
+            border-radius: 100px;
+            padding: 15px 45px;
+            border: none;
+
+            &:hover {
+                background-color: $color-primary-color-light;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.cards {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 990px;
+}
+
+.card {
+    background-color: $color-light-s;
+    border-radius: 9px;
+    width: 270px;
+    height: 435px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &:hover {
+        background-color: $color-light-xl;
+        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    }
+
+    .title {
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 23px;
+        text-align: center;
+        letter-spacing: 0.06em;
+    }
+}
+
+.card-button {
+    font-family: Georgia;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: $color-dark-3xl;
+    padding: 13px 43px;
+    border-radius: 100px;
+    background-color: transparent;
+    border: 2px solid $color-primary-color;
+    outline: none;
+
+    &:hover {
+        background-color: $color-primary-color-light;
+        border: 2px solid $color-primary-color-light;
+        cursor: pointer;
+    }
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    background-color: transparent;
+    border-radius: 100%;
+    border: 2px solid $color-primary-color;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $color-primary-color-light;
+        border: 2px solid $color-primary-color-light;
+    }
+}
+
+.arrow-right {
+    transform: rotate(180deg);
+}
