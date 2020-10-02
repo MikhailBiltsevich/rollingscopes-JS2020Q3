@@ -252,12 +252,14 @@ $color-dark-m: #B2B2B2;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding-bottom: 30px;
     align-items: center;
 
     &:hover {
         background-color: $color-light-xl;
         box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+        cursor: pointer;
     }
 
     .title {
