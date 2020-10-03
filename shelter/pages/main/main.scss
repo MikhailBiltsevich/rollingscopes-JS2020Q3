@@ -33,7 +33,7 @@ $color-dark-m: #B2B2B2;
     flex-direction: column;
 }
 
-.logo-title {
+.logo__title {
     margin-top: 1px;
     font-family: Georgia;
     font-weight: normal;
@@ -43,12 +43,12 @@ $color-dark-m: #B2B2B2;
     color: $color-primary-color;
 }
 
-.logo-subtitle {
+.logo__subtitle {
     margin-top: 9px;
     font-family: Arial;
     font-weight: normal;
-    font-size: 13px;
-    line-height: 15px;
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
     letter-spacing: 0.08195rem;
     text-align: center;
     color: $color-light-xl;
@@ -58,7 +58,7 @@ $color-dark-m: #B2B2B2;
     display: flex;
 }
 
-.menu-list {
+.menu__list {
     width: 443px;
     display: flex;
     justify-content: space-between;
@@ -66,33 +66,35 @@ $color-dark-m: #B2B2B2;
     padding-bottom: 1px;
 }
 
-.menu-list-item {
+.menu__item {
     display: flex;
     align-items: center;
 }
 
-.list-link {
+.menu__link {
     font-family: Arial;
     font-weight: normal;
     font-size: 0.9375rem;
     line-height: 160%;
     min-height: 27px;
-}
-
-.list-link-enabled {
-    color: $color-light-s;
-    border-bottom: 3px solid $color-primary-color;
-    cursor: default;
-}
-
-.list-link-disabled {
-    color: $color-dark-s;
-
-    &:hover {
+    
+    &_enabled {
         color: $color-light-s;
-        cursor: pointer;
+        border-bottom: 3px solid $color-primary-color;
+        cursor: default;
+    }
+    
+    &_disabled {
+        color: $color-dark-s;
+    
+        &:hover {
+            color: $color-light-s;
+            cursor: pointer;
+        }
     }
 }
+
+
 
 .main {
     width: 100vw;
@@ -106,46 +108,47 @@ $color-dark-m: #B2B2B2;
 .hero-content {
     padding-top: 163px;
     max-width: 460px;
-}
-
-.hero-title {
-    max-width: 19.375rem;
-    color: $color-light-xl;
-    font-family: Georgia;
-    font-weight: normal;
-    font-size: 44px;
-    line-height: 130%;
-}
-
-.hero-text {
-    margin-top: 42px;
-    font-family: Arial;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 160%;
-    color: $color-dark-s;
-}
-
-.hero-button {
-    background-color: $color-primary-color;
-    padding: 15px 45px;
-    border-radius: 100px;
-    outline: none;
-    border: none;
-    margin-top: 41px;
-    font-family: Georgia;
-    font-weight: normal;
-    font-size: 17px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
-    color: $color-dark-3xl;
-
-    &:hover {
-        background-color: $color-primary-color-light;
-        cursor: pointer;
+    
+    &__h2 {
+        max-width: 19.375rem;
+        color: $color-light-xl;
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 2.75rem;
+        line-height: 130%;
+    }
+    
+    &__text {
+        margin-top: 42px;
+        font-family: Arial;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.9375rem;
+        line-height: 160%;
+        color: $color-dark-s;
+    }
+    
+    &__button {
+        background-color: $color-primary-color;
+        padding: 15px 45px;
+        border-radius: 100px;
+        outline: none;
+        border: none;
+        margin-top: 41px;
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 1.0625rem;
+        line-height: 130%;
+        letter-spacing: 0.06em;
+        color: $color-dark-3xl;
+    
+        &:hover {
+            background-color: $color-primary-color-light;
+            cursor: pointer;
+        }
     }
 }
+
 
 .about {
     padding-top: 80px;
@@ -161,25 +164,23 @@ $color-dark-m: #B2B2B2;
     margin-top: 14px;
     max-width: 430px;
 
-    .title {
+    &__h3 {
         max-width: 370px;
         font-family: Georgia;
         font-weight: normal;
-        font-size: 35px;
+        font-size: 2.1875rem;
         line-height: 130%;
         letter-spacing: 0.06em;
         color: $color-dark-l;
     }
 
-    .text {
-        p {
-            margin-top: 25px;
-            font-family: Arial;
-            font-weight: normal;
-            font-size: 15px;
-            line-height: 160%;
-            color: $color-dark-xl;
-        }
+    &__paragraph {
+        margin-top: 25px;
+        font-family: Arial;
+        font-weight: normal;
+        font-size: 0.9375rem;
+        line-height: 160%;
+        color: $color-dark-xl;
     }
 }
 
@@ -188,11 +189,11 @@ $color-dark-m: #B2B2B2;
     padding-top: 80px;
     padding-bottom: 100px;
 
-    .title {
+    &__h3 {
         max-width: 400px;
         font-family: Georgia;
         font-weight: normal;
-        font-size: 35px;
+        font-size: 2.1875rem;
         line-height: 130%;
         text-align: center;
         letter-spacing: 0.06em;
@@ -213,14 +214,35 @@ $color-dark-m: #B2B2B2;
             justify-content: space-between;
             align-items: center;
             align-self: stretch;
+
+            &__arrow {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 52px;
+                height: 52px;
+                background-color: transparent;
+                border-radius: 100%;
+                border: 2px solid $color-primary-color;
+            
+                &:hover {
+                    cursor: pointer;
+                    background-color: $color-primary-color-light;
+                    border: 2px solid $color-primary-color-light;
+                }
+
+                &_right {
+                    transform: rotate(180deg);
+                }
+            }
         }
 
-        .friends-button {
+        .friends__button {
             margin-top: 60px;
             background-color: $color-primary-color;
             font-family: Georgia;
             font-weight: normal;
-            font-size: 17px;
+            font-size: 1.0625rem;
             line-height: 130%;
             color: $color-dark-3xl;
             letter-spacing: 0.06em;
@@ -237,14 +259,14 @@ $color-dark-m: #B2B2B2;
     }
 }
 
-.cards {
+.pets {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     width: 990px;
 }
 
-.card {
+.pet {
     background-color: $color-light-s;
     border-radius: 9px;
     width: 270px;
@@ -262,55 +284,34 @@ $color-dark-m: #B2B2B2;
         cursor: pointer;
     }
 
-    .title {
+    &__title {
         font-family: Georgia;
         font-weight: normal;
-        font-size: 20px;
-        line-height: 23px;
+        font-size: 1.25rem;
+        line-height: 1.4375rem;
         text-align: center;
         letter-spacing: 0.06em;
     }
-}
-
-.card-button {
-    font-family: Georgia;
-    font-weight: normal;
-    font-size: 17px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
-    color: $color-dark-3xl;
-    padding: 13px 43px;
-    border-radius: 100px;
-    background-color: transparent;
-    border: 2px solid $color-primary-color;
-    outline: none;
-
-    &:hover {
-        background-color: $color-primary-color-light;
-        border: 2px solid $color-primary-color-light;
-        cursor: pointer;
+    
+    &__button {
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 1.0625rem;
+        line-height: 130%;
+        letter-spacing: 0.06em;
+        color: $color-dark-3xl;
+        padding: 13px 43px;
+        border-radius: 100px;
+        background-color: transparent;
+        border: 2px solid $color-primary-color;
+        outline: none;
+    
+        &:hover {
+            background-color: $color-primary-color-light;
+            border: 2px solid $color-primary-color-light;
+            cursor: pointer;
+        }
     }
-}
-
-.arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 52px;
-    height: 52px;
-    background-color: transparent;
-    border-radius: 100%;
-    border: 2px solid $color-primary-color;
-
-    &:hover {
-        cursor: pointer;
-        background-color: $color-primary-color-light;
-        border: 2px solid $color-primary-color-light;
-    }
-}
-
-.arrow-right {
-    transform: rotate(180deg);
 }
 
 .help {
@@ -323,6 +324,15 @@ $color-dark-m: #B2B2B2;
         justify-content: space-between;
         align-items: center;
     }
+
+    &__h3 {
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 2.1875rem;
+        line-height: 130%;
+        text-align: center;
+        letter-spacing: 0.06em;
+    }
 }
 
 .help-types {
@@ -331,19 +341,20 @@ $color-dark-m: #B2B2B2;
     grid-template-rows: repeat(2, 113px);
     row-gap: 55px;
 
-    .inner-grid {
-        display: grid;
-        align-items: stretch;
-        column-gap: 120px;
-        justify-content: center;
+    
+}
 
-    }
+.inner-grid {
+    display: grid;
+    align-items: stretch;
+    column-gap: 120px;
+    justify-content: center;
 
-    .five-columns {
+    &_five-columns {
         grid-template-columns: repeat(5, auto);
     }
 
-    .four-columns {
+    &_four-columns {
         grid-template-columns: repeat(4, auto);
     }
 }
@@ -355,35 +366,21 @@ $color-dark-m: #B2B2B2;
     justify-content: space-between;
     align-items: center;
 
-    .help-type-title {
+    &__title {
         color: $color-dark-l;
         font-family: Georgia;
         font-weight: normal;
-        font-size: 20px;
+        font-size: 1.25rem;
         line-height: 115%;
         text-align: center;
         letter-spacing: 0.06em;
     }
 }
 
-.help-title {
-    font-family: Georgia;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 130%;
-    text-align: center;
-    letter-spacing: 0.06em;
-}
-
 .donation {
     padding-top: 80px;
     padding-bottom: 100px;
     background-color: $color-light-l;
-
-    &>img {
-        margin-top: 10px;
-        grid-row: span 4;
-    };
 
     .wrapper {
         justify-content: space-between;
@@ -402,22 +399,32 @@ $color-dark-m: #B2B2B2;
     justify-content: space-between;
     align-items: flex-start;
 
-    &>h3 {
+    &__h3 {
         color: $color-dark-l;
         font-family: Georgia;
         font-weight: normal;
-        font-size: 35px;
+        font-size: 2.1875rem;
         line-height: 130%;
         letter-spacing: 0.06em;
     }
     
-    &>h5 {
+    &__h5 {
         color: $color-dark-l;
         font-family: Georgia;
         font-weight: normal;
-        font-size: 15px;
+        font-size: 0.9375rem;
         line-height: 110%;
         letter-spacing: 0.06em;
+    }
+
+    
+    &__description {
+        color: $color-dark-m;
+        font-family: Arial;
+        font-style: italic;
+        font-weight: normal;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
     }
     
     .donate-link {
@@ -433,28 +440,20 @@ $color-dark-m: #B2B2B2;
         color: $color-dark-l;
         font-family: Georgia;
         font-weight: normal;
-        font-size: 20px;
+        font-size: 1.25rem;
         line-height: 115%;
         letter-spacing: 0.06em;
     
+        &__icon {
+            padding-right: 15px;
+        }
+
         &:hover {
             cursor: pointer;
             background-color: $color-primary-color-light;
         }
     }
    
-    &>p {
-        color: $color-dark-m;
-        font-family: Arial;
-        font-style: italic;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 18px;
-    }
-
-    .donate-link__icon {
-        padding-right: 15px;
-    }
 }
 
 
@@ -463,43 +462,43 @@ $color-dark-m: #B2B2B2;
     padding-top: 40px;
     
     
-    .information {
+    .contact, .location {
         margin-top: 16px;
         max-height: 234px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        
-        
-        &+.information-address {
-            width: 301px;
-        }
 
-            &>h3 {
-                color: $color-light-xl;
-                font-family: Georgia;
-                font-weight: normal;
-                font-size: 35px;
-                line-height: 130%;
-                letter-spacing: 0.06em;
-            }
-    
-            &>a {
-                display: flex;
-                align-items: center;
-                flex-wrap: nowrap;
-    
-                color: $color-primary-color;
-                font-family: Georgia;
-                font-weight: normal;
-                font-size: 20px;
-                line-height: 115%;
-                letter-spacing: 0.06em;
-                text-decoration: none;
-    
-                &>img {
-                    margin-right: 20px;
-                }
-            }
+        &__icon {
+            margin-right: 20px;
         }
+    }
+        
+    .location {
+        width: 301px;
+    }
+
+    .location__h3, .contact__h3 {
+        color: $color-light-xl;
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 2.1875rem;
+        line-height: 130%;
+        letter-spacing: 0.06em;
+    }
+
+    .location__link, .contact__link {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        color: $color-primary-color;
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 1.25rem;
+        line-height: 115%;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+
+    }
 }
