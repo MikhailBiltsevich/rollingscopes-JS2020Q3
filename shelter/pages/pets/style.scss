@@ -4,18 +4,22 @@ $color-dark-l: #545454;
 $color-light-xl: #FFFFFF;
 $color-dark-s: #CDCDCD;
 $color-light-s: #FAFAFA;
-$color-dark-xl: #4C4C4C;
 $color-light-l: #F6F6F6;
 $color-dark-3xl: #292929;
-$color-dark-m: #B2B2B2;
+
+%h3 {
+    font-family: Georgia;
+    font-weight: normal;
+    font-size: 2.1875rem;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+}
 
 %h4 {
     font-family: Georgia;
     font-weight: normal;
-    color: $color-dark-3xl;
     font-size: 1.25rem;
     line-height: 115%;
-    text-align: center;
     letter-spacing: 0.06em;
 }
 
@@ -119,13 +123,9 @@ $color-dark-m: #B2B2B2;
 
     &__h3 {
         width: 400px;
-        font-family: Georgia;
-        font-weight: normal;
-        font-size: 2.1875rem;
-        line-height: 130%;
         text-align: center;
-        letter-spacing: 0.06em;
         color: $color-dark-l;
+        @extend %h3;
     }
 
     .wrapper {
@@ -163,6 +163,12 @@ $color-dark-m: #B2B2B2;
         cursor: pointer;
     }
 
+    &:hover &__button { 
+        background-color: $color-primary-color-light;
+        border: 2px solid $color-primary-color-light;
+        cursor: pointer;
+    }
+
     &__title {
         font-family: Georgia;
         font-weight: normal;
@@ -184,12 +190,6 @@ $color-dark-m: #B2B2B2;
         background-color: transparent;
         border: 2px solid $color-primary-color;
         outline: none;
-    
-        &:hover {
-            background-color: $color-primary-color-light;
-            border: 2px solid $color-primary-color-light;
-            cursor: pointer;
-        }
     }
 }
 
@@ -205,6 +205,8 @@ $color-dark-m: #B2B2B2;
         border-radius: 100%;
         outline: none;
         border: 2px solid $color-primary-color;
+        color: $color-dark-3xl;
+        text-align: center;
         @extend %h4;
 
         &:hover {
@@ -227,5 +229,43 @@ $color-dark-m: #B2B2B2;
                 cursor: default;
             }
         }
+    }
+}
+
+.footer {
+    background: url(/assets/noise_transparent.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+    padding-top: 40px;
+    
+    
+    .contact, .location {
+        padding-top: 16px;
+        max-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__icon {
+            margin-right: 20px;
+        }
+    }
+        
+    .location {
+        width: 301px;
+    }
+
+    .location__h3, .contact__h3 {
+        color: $color-light-xl;
+        @extend %h3;
+    }
+
+    .location__link, .contact__link {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        @extend %h4;
+        color: $color-primary-color;
+        text-decoration: none;
+
     }
 }
