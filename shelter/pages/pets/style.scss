@@ -209,25 +209,19 @@ $color-dark-3xl: #292929;
         text-align: center;
         @extend %h4;
 
-        &:hover {
+        &_enabled:hover {
             cursor: pointer;
+            background-color: $color-primary-color-light;
+            border-color: $color-primary-color-light;
         }
 
         &_active {
             background-color: $color-primary-color;
-
-            &:hover {
-                cursor: default;
-            }
         }
 
         &_disabled {
             border-color: $color-dark-s;
             color: $color-dark-s;
-
-            &:hover {
-                cursor: default;
-            }
         }
     }
 }

@@ -189,21 +189,17 @@
   color: #292929;
   text-align: center;
 }
-.pagination-nav__button:hover {
+.pagination-nav__button_enabled:hover {
   cursor: pointer;
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
 }
 .pagination-nav__button_active {
   background-color: #F1CDB3;
 }
-.pagination-nav__button_active:hover {
-  cursor: default;
-}
 .pagination-nav__button_disabled {
   border-color: #CDCDCD;
   color: #CDCDCD;
-}
-.pagination-nav__button_disabled:hover {
-  cursor: default;
 }
 
 .footer {
