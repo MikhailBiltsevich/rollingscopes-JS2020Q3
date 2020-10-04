@@ -16,7 +16,7 @@ $color-dark-m: #B2B2B2;
   }
 
 .header {
-    width: 100vw;
+    width: 100%;
     position: absolute;
     top: 60px;
 }
@@ -97,7 +97,7 @@ $color-dark-m: #B2B2B2;
 
 
 .main {
-    width: 100vw;
+    width: 100%;
 }
 
 .hero {
@@ -161,7 +161,7 @@ $color-dark-m: #B2B2B2;
 }
 
 .about-content {
-    margin-top: 14px;
+    padding-top: 14px;
     max-width: 430px;
 
     &__h3 {
@@ -207,7 +207,7 @@ $color-dark-m: #B2B2B2;
         align-items: center;
 
         .slider {
-            margin-top: 60px;
+            padding-top: 60px;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -336,7 +336,7 @@ $color-dark-m: #B2B2B2;
 }
 
 .help-types {
-    margin-top: 60px;
+    padding-top: 60px;
     display: grid;
     grid-template-rows: repeat(2, 113px);
     row-gap: 55px;
@@ -463,8 +463,8 @@ $color-dark-m: #B2B2B2;
     
     
     .contact, .location {
-        margin-top: 16px;
-        max-height: 234px;
+        padding-top: 16px;
+        max-height: 250px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

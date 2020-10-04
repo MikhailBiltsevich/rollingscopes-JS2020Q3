@@ -5,7 +5,7 @@
 }
 
 .header {
-  width: 100vw;
+  width: 100%;
   position: absolute;
   top: 60px;
 }
@@ -81,7 +81,7 @@
 }
 
 .main {
-  width: 100vw;
+  width: 100%;
 }
 
 .hero {
@@ -139,7 +139,7 @@
 }
 
 .about-content {
-  margin-top: 14px;
+  padding-top: 14px;
   max-width: 430px;
 }
 .about-content__h3 {
@@ -182,7 +182,7 @@
   align-items: center;
 }
 .friends .wrapper .slider {
-  margin-top: 60px;
+  padding-top: 60px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -298,7 +298,7 @@
 }
 
 .help-types {
-  margin-top: 60px;
+  padding-top: 60px;
   display: grid;
   grid-template-rows: repeat(2, 113px);
   row-gap: 55px;
@@ -408,8 +408,8 @@
   padding-top: 40px;
 }
 .footer .contact, .footer .location {
-  margin-top: 16px;
-  max-height: 234px;
+  padding-top: 16px;
+  max-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
