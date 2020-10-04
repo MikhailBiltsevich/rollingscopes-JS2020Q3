@@ -199,6 +199,7 @@
   background-color: transparent;
   border-radius: 100%;
   border: 2px solid #F1CDB3;
+  outline: none;
 }
 .friends .wrapper .slider__arrow:hover {
   cursor: pointer;
