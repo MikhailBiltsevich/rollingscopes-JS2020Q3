@@ -35,6 +35,10 @@ $color-dark-3xl: #292929;
     top: 0;
     padding: 30px 0;
     background-color: $color-light-xl;
+    
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        padding: 30px;
+    }
 }
 
 .wrapper {
@@ -42,6 +46,11 @@ $color-dark-3xl: #292929;
     margin: 0 auto;
     justify-content: space-between;
     max-width: 1200px;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        max-width: 708px;;
+    }
+
 }
 
 .logo {
@@ -121,6 +130,11 @@ $color-dark-3xl: #292929;
     padding-top: 80px;
     padding-bottom: 100px;
 
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        padding-top: 70px;
+        padding-bottom: 76px;
+    }
+
     &__h3 {
         width: 400px;
         text-align: center;
@@ -143,6 +157,11 @@ $color-dark-3xl: #292929;
     row-gap: 30px;
     width: 100%;
     padding: 60px 0;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 64px;
+    }
 }
 
 .pet {
@@ -156,6 +175,12 @@ $color-dark-3xl: #292929;
     justify-content: space-between;
     padding-bottom: 30px;
     align-items: center;
+
+    &:nth-last-child(-n+2) {
+        @media screen and (min-width: 768px) and (max-width: 1279px) {
+            display: none;
+        }
+    }
 
     &:hover {
         background-color: $color-light-xl;
@@ -230,13 +255,44 @@ $color-dark-3xl: #292929;
     background: url(/assets/noise_transparent.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
     padding-top: 40px;
     
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        padding-top: 30px;
+    }
+    
+    .wrapper {
+        display: grid;
+        grid-template-columns: 279px 301px auto;
+        grid-template-rows: auto;
+        column-gap: 160px;
+
+        @media screen and (min-width: 768px) and (max-width: 1279px) {
+            grid-template-columns: 279px 301px;
+            grid-template-rows: auto 315px;
+            column-gap: 60px;
+            row-gap: 60px;
+            padding: 0 34px;
+        }
+    }
+
+    &__image {
+        @media screen and (min-width: 768px) and (max-width: 1279px) {
+            grid-column: 1 / span 2;
+            justify-self: center;
+            align-self: end;
+        }
+    }
     
     .contact, .location {
         padding-top: 16px;
-        max-height: 250px;
+        height: 250px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        @media screen and (min-width: 768px) and (max-width: 1279px) {
+            padding-top: 0;
+            height: 234px;
+        }
 
         &__icon {
             margin-right: 20px;
