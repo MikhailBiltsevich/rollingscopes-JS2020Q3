@@ -221,7 +221,6 @@
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .friends {
-    padding-top: 70px;
     padding-bottom: 76px;
   }
 }
@@ -260,7 +259,7 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .pets {
     grid-template-columns: repeat(2, 1fr);
-    padding: 40px 64px;
+    padding: 30px 64px 40px;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
