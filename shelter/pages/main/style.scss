@@ -527,7 +527,12 @@ $color-dark-m: #B2B2B2;
         }
 
         .friends__button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-top: 60px;
+            width: 260px;
+            height: 52px;
             background-color: $color-primary-color;
             font-family: Georgia;
             font-weight: normal;
@@ -535,9 +540,8 @@ $color-dark-m: #B2B2B2;
             line-height: 130%;
             color: $color-dark-3xl;
             letter-spacing: 0.06em;
-            outline: none;
+            text-decoration: none;
             border-radius: 100px;
-            padding: 15px 45px;
             border: none;
 
             @media screen and (min-width: 320px) and (max-width: 767px) {

@@ -498,7 +498,12 @@
   transform: rotate(180deg);
 }
 .friends > .wrapper .friends__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 60px;
+  width: 260px;
+  height: 52px;
   background-color: #F1CDB3;
   font-family: Georgia;
   font-weight: normal;
@@ -506,9 +511,8 @@
   line-height: 130%;
   color: #292929;
   letter-spacing: 0.06em;
-  outline: none;
+  text-decoration: none;
   border-radius: 100px;
-  padding: 15px 45px;
   border: none;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
