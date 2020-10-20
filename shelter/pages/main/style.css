@@ -169,6 +169,7 @@
   font-size: 0.9375rem;
   line-height: 160%;
   min-height: 27px;
+  text-decoration: none;
 }
 .menu__link_enabled {
   color: #FAFAFA;
