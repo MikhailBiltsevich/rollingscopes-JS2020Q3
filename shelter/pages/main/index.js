@@ -77,3 +77,14 @@ function createPetCard(imgReference, title, id) {
 
     return cardElement;
 }
+
+
+document.querySelector(".menu-icon-wrapper").addEventListener("click", toggleMenu);
+document.querySelector(".mask").addEventListener("click", toggleMenu);
+document.querySelector(".menu").addEventListener("click", toggleMenu);
+
+function toggleMenu(event) {
+    document.querySelector(".menu-icon-wrapper").classList.toggle("menu-icon-wrapper_active");
+    document.querySelector(".menu").classList.toggle("menu_hidden");
+    document.querySelector(".mask").classList.toggle("mask_active");
+}

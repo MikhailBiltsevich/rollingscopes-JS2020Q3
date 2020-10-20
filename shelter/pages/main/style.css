@@ -14,9 +14,14 @@
     top: 30px;
     padding: 0 53px 0 3.125%;
   }
-  .header > .wrapper {
+  .header .mobile-wrapper {
+    position: absolute;
+    right: 53px;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    width: 257px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -64,12 +69,19 @@
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .menu {
-    width: 100%;
-    padding-top: 30px;
+    flex-direction: column;
     justify-content: center;
+    width: 320px;
+    height: 100%;
+    background-color: #292929;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    transition: right 0.2s;
   }
   .menu_hidden {
-    display: none;
+    right: -320px;
   }
 }
 
@@ -79,6 +91,7 @@
   height: 30px;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s ease-in;
 }
 .menu-icon-wrapper:hover {
   cursor: pointer;
@@ -87,6 +100,10 @@
   .menu-icon-wrapper {
     display: flex;
   }
+}
+.menu-icon-wrapper_active {
+  transform: rotate(90deg);
+  transition: all 0.2s ease-in;
 }
 
 .menu-icon {
@@ -151,9 +168,10 @@
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .menu__list {
-    width: auto;
+    width: 100%;
+    height: 327px;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
   }
 }
@@ -170,6 +188,11 @@
   line-height: 160%;
   min-height: 27px;
   text-decoration: none;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .menu__link {
+    font-size: 2rem;
+  }
 }
 .menu__link_enabled {
   color: #FAFAFA;
@@ -241,10 +264,14 @@
   color: #CDCDCD;
 }
 .hero-content__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 207px;
+  height: 52px;
   background-color: #F1CDB3;
-  padding: 15px 45px;
   border-radius: 100px;
-  outline: none;
+  text-decoration: none;
   border: none;
   font-family: Georgia;
   font-weight: normal;
@@ -905,4 +932,20 @@
 .footer__image {
   object-fit: cover;
   height: 100%;
+}
+
+.mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(41, 41, 41, 0.6);
+  transition: all 0.2s;
+}
+.mask_active {
+  display: block;
+  width: 100%;
 }
