@@ -34,7 +34,7 @@ function setSlide() {
 
     let petsCount;
     let clientWidth = document.documentElement.clientWidth;
-    document.documentElement.onresize
+
     if (clientWidth >= 1280) {
         petsCount = 3;
     }
@@ -74,17 +74,88 @@ function createPetCard(imgReference, title, id) {
     buttonElement.innerText = "Learn more";
 
     cardElement.append(imageElement, titleElement, buttonElement);
+    cardElement.addEventListener("click", function() {
+
+        fillPopup(pets[+this.dataset.id]);
+        showPopup();
+    });
 
     return cardElement;
 }
 
+function fillPopup(pet) {
+    let petImage = document.querySelector(".popup-container__image");
+    petImage.setAttribute("src", pet.img);
+    
+    let petTitle = document.querySelector(".popup-container__title");
+    petTitle.textContent = pet.name;
 
-document.querySelector(".menu-icon-wrapper").addEventListener("click", toggleMenu);
-document.querySelector(".mask").addEventListener("click", toggleMenu);
-document.querySelector(".menu").addEventListener("click", toggleMenu);
+    let petSubtitle = document.querySelector(".popup-container__subtitle");
+    petSubtitle.textContent = `${pet.type} - ${pet.breed}`;
 
-function toggleMenu(event) {
+    let petDescription = document.querySelector(".popup-container__description");
+    petDescription.textContent = pet.description;
+
+    let usedProperties = ["img", "name", "type", "breed", "description"];
+    let summary = document.querySelector(".popup-summary");
+    summary.textContent = "";
+    for(let property in pet) {
+        if(usedProperties.includes(property)) {
+            continue;
+        }
+
+        let summaryItem = document.createElement("li");
+        summaryItem.classList.add("popup-summary__item");
+
+        let propertyContent;
+        if(Array.isArray(pet[property])) {
+            propertyContent = pet[property].join(", ");
+        } else {
+            propertyContent = pet[property];
+        }
+        summaryItem.innerHTML = `<strong class="popup-summary__property">${property}: </strong>${propertyContent}`;
+        summary.append(summaryItem);
+    }
+}
+
+function showPopup() {
+    document.querySelector(".popup").classList.add("popup_active");
+}
+
+function closePopup() {
+    let popup = document.querySelector(".popup");
+        popup.classList.remove("popup_active");
+}
+
+function popupMouseOverEvent(event) {
+    let popup = document.querySelector(".popup");
+    let button = popup.querySelector(".popup-container__close-button");
+    
+    if(event.target == popup) {
+        button.classList.add("popup-container__close-button_active");
+    } else {
+        button.classList.remove("popup-container__close-button_active");
+    }
+}
+
+function outsideClick(event) {
+    let popup = document.querySelector(".popup");
+    let mask = document.querySelector(".mask");
+    if(event.target == popup) {
+        closePopup();
+    } else if (event.target == mask) {
+        toggleMenu();
+    }
+}
+
+function toggleMenu() {
     document.querySelector(".menu-icon-wrapper").classList.toggle("menu-icon-wrapper_active");
-    document.querySelector(".menu").classList.toggle("menu_hidden");
+    document.querySelector(".menu").classList.toggle("menu_active");
     document.querySelector(".mask").classList.toggle("mask_active");
 }
+
+document.querySelector(".menu-icon-wrapper").addEventListener("click", toggleMenu);
+document.querySelector(".popup-container__close-button").addEventListener("click", closePopup);
+
+window.addEventListener("mouseover", popupMouseOverEvent);
+window.addEventListener("click", outsideClick);

@@ -86,12 +86,12 @@ $color-dark-m: #B2B2B2;
         background-color: $color-dark-3xl;
         position: fixed;
         top: 0;
-        right: 0;
+        right: -320px;
         z-index: 2;
         transition: right 0.2s;
 
-        &_hidden {
-            right: -320px;
+        &_active {
+            right: 0px;
         }
     }
 }
@@ -998,53 +998,25 @@ $color-dark-m: #B2B2B2;
 }
 
 .popup {
+    display: none;
     position: fixed;
     z-index: 10;
     top: 0;
-    width: 952px;
-    height: 552px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(41, 41, 41, 0.6);
 
-    &__close-button {
-        position: relative;
-        right: 10px;
-        width: 52px;
-        height: 52px;
-        align-self: flex-end;
+    &_active {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid $color-primary-color;
-        border-radius: 100px;
-        outline: none;
-        background: transparent;
-
-        &:hover {
-            background-color: $color-primary-color-light;
-            border-color: $color-primary-color-light;
-            cursor: pointer;
-        }
     }
-
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-        height: 393px;
-
-        &__close-button {
-            right: 0;
-        }
-    }
-
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 682px;
-        height: 402px;
-    }
-
 }
 
-.pet-container {
+.popup-container {
+    position: relative;
+    z-index: 15;
     width: 900px;
     height: 500px;
     
@@ -1055,6 +1027,26 @@ $color-dark-m: #B2B2B2;
     background-color: $color-light-s;
     border-radius: 9px;
 
+    &__close-button {
+        position: absolute;
+        right: -42px;
+        top: -52px;
+        width: 52px;
+        height: 52px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        border: 2px solid $color-primary-color;
+        border-radius: 100px;
+        outline: none;
+
+        &:hover, &_active {
+            background-color: $color-primary-color-light;
+            cursor: pointer;
+        }
+    }
+
     &__image {
         height: 100%;
         object-fit: cover;
@@ -1063,7 +1055,7 @@ $color-dark-m: #B2B2B2;
     &__text {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
 
         width: 350px;
         height: 362px;
@@ -1092,6 +1084,7 @@ $color-dark-m: #B2B2B2;
     }
 
     &__description {
+        margin: 40px 0;
         font-family: Georgia;
         font-weight: normal;
         font-size: 0.9375rem;
@@ -1103,6 +1096,10 @@ $color-dark-m: #B2B2B2;
     @media screen and (min-width: 320px) and (max-width: 767px) {
         width: 240px;
         height: 341px;
+
+        &__close-button {
+            right: -51px;
+        }
 
         &__image {
             display: none;
@@ -1122,6 +1119,7 @@ $color-dark-m: #B2B2B2;
         }
 
         &__description {
+            margin: 20px 0 24px 0;
             text-align: justify;
             font-size: 0.8125rem;
             line-height: 0.875rem;
@@ -1132,6 +1130,10 @@ $color-dark-m: #B2B2B2;
         width: 630px;
         height: 350px;
 
+        &__close-button {
+            right: -43px;
+        }
+
         &__text {
             width: 261px;
             height: 302px;
@@ -1139,15 +1141,16 @@ $color-dark-m: #B2B2B2;
         }
 
         &__description {
+            margin: 20px 0;
             font-size: 0.8125rem;
             line-height: 0.875rem;
         }
     }
 }
 
-.pet-summary {
+.popup-summary {
     list-style-position: outside;
-    margin-left: 25px;
+    margin-left: 21px;
 
     &__item:nth-last-child(n+2) {
         margin-bottom: 10px;
@@ -1156,7 +1159,7 @@ $color-dark-m: #B2B2B2;
     &__item {
         position: relative;
         left: -5px;
-        height: 18px;
+        min-height: 18px;
         font-family: Georgia;
         font-style: normal;
         font-size: 0.9375rem;
@@ -1164,10 +1167,15 @@ $color-dark-m: #B2B2B2;
         letter-spacing: 0.06em;
         color: #000000;
 
+        &::first-letter {
+            text-transform: uppercase;
+        }
+
         &::marker {
             color: $color-primary-color;
         }
     }
+
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
         &__item:nth-last-child(n+2) {
