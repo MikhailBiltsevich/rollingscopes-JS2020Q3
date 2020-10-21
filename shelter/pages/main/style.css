@@ -194,7 +194,7 @@
     font-size: 2rem;
   }
 }
-.menu__link_enabled {
+.menu__link_active {
   color: #FAFAFA;
   border-bottom: 3px solid #F1CDB3;
   cursor: default;

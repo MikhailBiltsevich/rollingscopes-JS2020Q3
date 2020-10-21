@@ -148,6 +148,14 @@ function outsideClick(event) {
     }
 }
 
+function activeLinkClick() {
+    window.scrollTo(0, 0);
+    if(document.querySelector(".menu_active")) {
+        toggleMenu();
+    }
+
+}
+
 function toggleMenu() {
     document.querySelector(".menu-icon-wrapper").classList.toggle("menu-icon-wrapper_active");
     document.querySelector(".menu").classList.toggle("menu_active");
@@ -156,6 +164,7 @@ function toggleMenu() {
 
 document.querySelector(".menu-icon-wrapper").addEventListener("click", toggleMenu);
 document.querySelector(".popup-container__close-button").addEventListener("click", closePopup);
+document.querySelector(".menu__link_active").addEventListener("click", activeLinkClick);
 
 window.addEventListener("mouseover", popupMouseOverEvent);
 window.addEventListener("click", outsideClick);
