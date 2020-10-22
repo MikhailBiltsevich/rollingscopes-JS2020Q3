@@ -25,6 +25,7 @@
   position: sticky;
   top: 0;
   padding: 30px 0;
+  z-index: 10;
   background-color: #FFFFFF;
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -33,10 +34,17 @@
   }
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .header > .wrapper {
-    padding-right: 43px;
+  .header {
+    padding: 30px 50px 30px 3.125%;
+  }
+  .header .wrapper {
+    justify-content: flex-end;
+  }
+  .header .mobile-wrapper {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    width: 260px;
   }
 }
 
@@ -45,11 +53,6 @@
   margin: 0 auto;
   justify-content: space-between;
   max-width: 1200px;
-}
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .wrapper {
-    max-width: 300px;
-  }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .wrapper {
@@ -90,24 +93,46 @@
   display: flex;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .menu_hidden {
-    display: none;
+  .menu {
+    flex-direction: column;
+    justify-content: center;
+    width: 320px;
+    height: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    z-index: -1;
+    transition: right 0.2s;
+  }
+  .menu_active {
+    right: 0px;
   }
 }
 
 .menu-icon-wrapper {
   width: 30px;
   height: 30px;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s ease-in;
 }
 .menu-icon-wrapper:hover {
   cursor: pointer;
 }
+.menu-icon-wrapper_active {
+  transform: rotate(90deg);
+  transition: all 0.2s ease-in;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .menu-icon-wrapper {
+    display: flex;
+  }
+}
 
 .menu-icon {
-  display: none;
+  display: block;
   position: relative;
   width: 30px;
   height: 2px;
@@ -131,38 +156,6 @@
   height: 2px;
   background-color: #000;
 }
-.menu-icon_active {
-  display: none;
-  position: relative;
-  width: 30px;
-  height: 2px;
-  background-color: transparent;
-}
-.menu-icon_active::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0px;
-  width: 30px;
-  height: 2px;
-  transform: rotate(45deg);
-  background-color: #000;
-}
-.menu-icon_active::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0px;
-  width: 30px;
-  height: 2px;
-  transform: rotate(-45deg);
-  background-color: #000;
-}
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .menu-icon {
-    display: block;
-  }
-}
 
 .menu__list {
   width: 443px;
@@ -171,21 +164,16 @@
   list-style-type: none;
   padding-bottom: 1px;
 }
-
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .menu {
-    width: 100%;
-    padding-top: 30px;
-    justify-content: center;
-  }
-
   .menu__list {
-    width: auto;
+    width: 100%;
+    height: 327px;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
   }
 }
+
 .menu__item {
   display: flex;
   align-items: center;
@@ -199,6 +187,11 @@
   min-height: 27px;
   text-decoration: none;
   color: #545454;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .menu__link {
+    font-size: 2rem;
+  }
 }
 .menu__link:hover {
   color: #292929;
@@ -464,4 +457,18 @@
 .footer__image {
   object-fit: cover;
   height: 100%;
+}
+
+.outside-cover {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(41, 41, 41, 0.6);
+  transition: all 0.2s;
+}
+.outside-cover_active {
+  width: 100%;
 }

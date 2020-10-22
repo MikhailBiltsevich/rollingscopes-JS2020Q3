@@ -34,6 +34,7 @@ $color-dark-3xl: #292929;
     position: sticky;
     top: 0;
     padding: 30px 0;
+    z-index: 10;
     background-color: $color-light-xl;
     
     @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -41,10 +42,17 @@ $color-dark-3xl: #292929;
     }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        &>.wrapper {
-            padding-right: 43px;
+        padding: 30px 50px 30px 3.125%;
+
+        .wrapper {
+            justify-content: flex-end;
+        }
+
+        .mobile-wrapper {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            width: 260px;
         }
     }
 }
@@ -54,10 +62,6 @@ $color-dark-3xl: #292929;
     margin: 0 auto;
     justify-content: space-between;
     max-width: 1200px;
-
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        max-width: 300px;
-    }
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
         max-width: 708px;
@@ -98,8 +102,20 @@ $color-dark-3xl: #292929;
     display: flex;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        &_hidden {
-            display: none;
+        flex-direction: column;
+        justify-content: center;
+        
+        width: 320px;
+        height: 100%;
+        background-color: $color-light-xl;
+        position: fixed;
+        top: 0;
+        right: -320px;
+        z-index: -1;
+        transition: right 0.2s;
+
+        &_active {
+            right: 0px;
         }
     }
 }
@@ -107,17 +123,27 @@ $color-dark-3xl: #292929;
 .menu-icon-wrapper {
     width: 30px;
     height: 30px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    transition: all 0.2s ease-in;
 
     &:hover {
         cursor: pointer;
     }
+
+    &_active {
+        transform: rotate(90deg);
+        transition: all 0.2s ease-in;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: flex;
+    }
 }
 
 .menu-icon {
-    display: none;
+    display: block;
     position: relative;
     width: 30px;
     height: 2px;
@@ -142,40 +168,6 @@ $color-dark-3xl: #292929;
         height: 2px;
         background-color: #000;
     }
-
-    &_active {
-        display: none;
-        position: relative;
-        width: 30px;
-        height: 2px;
-        background-color: transparent;
-
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0px;
-            width: 30px;
-            height: 2px;
-            transform: rotate(45deg);
-            background-color: #000;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0px;
-            width: 30px;
-            height: 2px;
-            transform: rotate(-45deg);
-            background-color: #000;
-        }   
-    }
-
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        display: block;
-    }
 }
 
 .menu__list {
@@ -184,22 +176,16 @@ $color-dark-3xl: #292929;
     justify-content: space-between;
     list-style-type: none;
     padding-bottom: 1px;
-}
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
-    .menu {
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         width: 100%;
-        padding-top: 30px;
-        justify-content: center;
-    }
-
-    .menu__list {
-        width: auto;
+        height: 327px;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
     }
 }
+
 
 .menu__item {
     display: flex;
@@ -214,6 +200,10 @@ $color-dark-3xl: #292929;
     min-height: 27px;
     text-decoration: none;
     color: $color-dark-l;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 2rem;
+    }
 
     &:hover {
         color: $color-dark-3xl;
@@ -497,5 +487,20 @@ $color-dark-3xl: #292929;
     &__image {
         object-fit: cover;
         height: 100%;
+    }
+}
+
+.outside-cover {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(41, 41, 41, 0.6);
+    transition: all 0.2s;
+
+    &_active {
+        width: 100%;
     }
 }
