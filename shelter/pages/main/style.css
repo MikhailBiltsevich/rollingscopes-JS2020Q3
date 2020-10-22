@@ -456,26 +456,27 @@
 }
 .friends > .wrapper .slider {
   padding-top: 60px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 52px 990px 52px;
+  grid-template-areas: "left-arrow pets right-arrow";
+  justify-items: stretch;
   align-items: center;
-  align-self: stretch;
+  column-gap: 53px;
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .friends > .wrapper .slider {
-    min-width: 708px;
-    align-self: unset;
+    grid-template-columns: 52px 580px 52px;
+    column-gap: 12px;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .friends > .wrapper .slider {
-    flex-wrap: wrap;
-    padding-top: 0;
-    justify-content: center;
-    column-gap: 80px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: "pets pets" "left-arrow right-arrow";
     row-gap: 20px;
+    column-gap: 80px;
+    padding: 0;
   }
 }
 .friends > .wrapper .slider__arrow {
@@ -493,6 +494,14 @@
   cursor: pointer;
   background-color: #FDDCC4;
   border: 2px solid #FDDCC4;
+}
+.friends > .wrapper .slider__arrow:first-child {
+  justify-self: end;
+  grid-area: left-arrow;
+}
+.friends > .wrapper .slider__arrow:last-child {
+  justify-self: start;
+  grid-area: right-arrow;
 }
 .friends > .wrapper .slider__arrow_right {
   transform: rotate(180deg);
@@ -526,6 +535,7 @@
 }
 
 .pets {
+  grid-area: pets;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -555,19 +565,14 @@
   padding-bottom: 30px;
   align-items: center;
 }
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .pet:last-child {
-    display: none;
-  }
-}
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .pet:nth-child(n+2) {
-    display: none;
-  }
-}
 .pet:hover {
   background-color: #FFFFFF;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  cursor: pointer;
+}
+.pet:hover .pet__button {
+  background-color: #FDDCC4;
+  border: 2px solid #FDDCC4;
   cursor: pointer;
 }
 .pet__title {
