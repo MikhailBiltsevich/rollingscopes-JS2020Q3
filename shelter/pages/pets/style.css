@@ -344,6 +344,7 @@
   border: 2px solid #F1CDB3;
   color: #292929;
   text-align: center;
+  background: transparent;
 }
 .pagination-nav__button_enabled:hover {
   cursor: pointer;
