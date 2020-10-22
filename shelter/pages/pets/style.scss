@@ -70,6 +70,7 @@ $color-dark-3xl: #292929;
     flex-direction: column;
     justify-content: space-between;
     height: 60px;
+    cursor: pointer;
 }
 
 .logo__title {
@@ -211,21 +212,20 @@ $color-dark-3xl: #292929;
     font-size: 0.9375rem;
     line-height: 160%;
     min-height: 27px;
+    text-decoration: none;
+    color: $color-dark-l;
+
+    &:hover {
+        color: $color-dark-3xl;
+        cursor: pointer;
+    }
     
-    &_enabled {
+    &_active {
         color: $color-dark-3xl;
         border-bottom: 3px solid $color-primary-color;
         cursor: default;
     }
     
-    &_disabled {
-        color: $color-dark-l;
-    
-        &:hover {
-            color: $color-dark-3xl;
-            cursor: pointer;
-        }
-    }
 }
 
 .main {

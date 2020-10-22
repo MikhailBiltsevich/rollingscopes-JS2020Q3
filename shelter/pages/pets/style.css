@@ -62,6 +62,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 60px;
+  cursor: pointer;
 }
 
 .logo__title {
@@ -196,18 +197,17 @@
   font-size: 0.9375rem;
   line-height: 160%;
   min-height: 27px;
+  text-decoration: none;
+  color: #545454;
 }
-.menu__link_enabled {
+.menu__link:hover {
+  color: #292929;
+  cursor: pointer;
+}
+.menu__link_active {
   color: #292929;
   border-bottom: 3px solid #F1CDB3;
   cursor: default;
-}
-.menu__link_disabled {
-  color: #545454;
-}
-.menu__link_disabled:hover {
-  color: #292929;
-  cursor: pointer;
 }
 
 .main {
