@@ -46,61 +46,15 @@
                 </h3>
 
                 <div class="pets">
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/katrine.png" alt="Katrine photo">
-                        <div class="pet__title">Katrine</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
-
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/jennifer.png" alt="Jennifer photo">
-                        <div class="pet__title">Jennifer</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
                     
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/woody.png" alt="Woody photo">
-                        <div class="pet__title">Woody</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
-                    
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/sophia.png" alt="Sophia photo">
-                        <div class="pet__title">Sophia</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
-
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/timmy.png" alt="Timmy photo">
-                        <div class="pet__title">Timmy</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
-
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/charly.png" alt="Charly photo">
-                        <div class="pet__title">Charly</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
-
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/scarlett.png" alt="Scarlett photo">
-                        <div class="pet__title">Scarlett</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
-
-                    <div class="pet">
-                        <img class="pet__photo" src="/assets/images/freddie.png" alt="Freddie photo">
-                        <div class="pet__title">Freddie</div>
-                        <button class="pet__button">Learn more</button>
-                    </div>
                 </div>
 
                 <div class="pagination-nav">
-                    <button class="pagination-nav__button pagination-nav__button_disabled" disabled>&lt;&lt;</button>
-                    <button class="pagination-nav__button pagination-nav__button_disabled" disabled>&lt;</button>
-                    <button class="pagination-nav__button pagination-nav__button_active">1</button>
-                    <button class="pagination-nav__button pagination-nav__button_enabled">&gt;</button>
-                    <button class="pagination-nav__button pagination-nav__button_enabled">&gt;&gt;</button>
+                    <button id="first-page" class="pagination-nav__button pagination-nav__button_disabled" disabled>&lt;&lt;</button>
+                    <button id="prev-page" class="pagination-nav__button pagination-nav__button_disabled" disabled>&lt;</button>
+                    <div class="pagination-nav__current-page" data-page-index="0">1</div>
+                    <button id="next-page" class="pagination-nav__button pagination-nav__button_enabled">&gt;</button>
+                    <button id="last-page" class="pagination-nav__button pagination-nav__button_enabled">&gt;&gt;</button>
                 </div>
             </div>
         </div>
