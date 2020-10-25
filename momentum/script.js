@@ -2,9 +2,11 @@ const time  = document.querySelector(".time");
 const greeting = document.querySelector(".greeting");
 const name = document.querySelector(".name");
 const focus = document.querySelector(".focus");
+const updateButton = document.querySelector(".update-image-button");
 
 const images = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg'];
 let indexImage = Math.floor(Math.random() * images.length);
+let imageDirectory;
 
 function setTime() {
   let date = new Date(),
@@ -20,6 +22,7 @@ function setTime() {
     <div>${hours}:${addZero(minutes)}:${addZero(seconds)}</div>`;
 
   setTimeout(setTime, 1000);
+  updateGreeting();
 }
 
 function addZero(num) {
@@ -45,20 +48,45 @@ function setGreeting(){
   if (hours < 6) {
     greetingText = "Good night, ";
     document.body.style.color = "white";
-    document.body.style.backgroundImage = `url(./assets/images/night/${getImageName()})`;
+    imageDirectory = "./assets/images/night";
+    setBackgroundImage();
   } else if (hours < 12) {
     greetingText = "Good morning, ";
-    document.body.style.backgroundImage = `url(./assets/images/morning/${getImageName()})`;
+    imageDirectory = "./assets/images/morning";
+    setBackgroundImage();
   } else if (hours < 18) {
     greetingText = "Good afternoon, ";
-    document.body.style.backgroundImage = `url(./assets/images/afternoon/${getImageName()})`;
+    imageDirectory = "./assets/images/afternoon";
+    setBackgroundImage();
   } else if (hours < 24) {
     greetingText = "Good evening, ";
-    document.body.style.backgroundImage = `url(./assets/images/evening/${getImageName()})`;
+    imageDirectory = "./assets/images/evening";
+    setBackgroundImage();
     document.body.style.color = "white";
   }
 
   greeting.textContent = greetingText;
+}
+
+function setBackgroundImage () {
+  let img = document.createElement("img");
+  let src = `${imageDirectory}/${getImageName()}`;
+  
+  img.src = src;
+  img.onload = () => {
+    document.body.style.backgroundImage = `url(${src})`;
+  };
+
+  updateButton.disabled = true;
+  setTimeout(() => {  updateButton.disabled = false; }, 1000);
+}
+
+async function updateGreeting() {
+  let date = new Date();
+
+  if (date.getMinutes() === 0 && date.getSeconds() === 0) {
+    setGreeting();
+  }
 }
 
 function getImageName() {
@@ -117,6 +145,7 @@ name.addEventListener("focus", setName);
 name.addEventListener("blur", setName);
 focus.addEventListener("focus", setFocus);
 focus.addEventListener("blur", setFocus);
+updateButton.addEventListener("click", setBackgroundImage);
 
 setTime();
 setGreeting();
