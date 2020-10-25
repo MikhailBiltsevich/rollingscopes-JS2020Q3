@@ -3,6 +3,8 @@ const greeting = document.querySelector(".greeting");
 const name = document.querySelector(".name");
 const focus = document.querySelector(".focus");
 const updateButton = document.querySelector(".update-image-button");
+const blockquote = document.querySelector(".blockquote");
+const refreshButton = document.querySelector(".refresh-button");
 
 const images = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg'];
 let indexImage = Math.floor(Math.random() * images.length);
@@ -141,12 +143,24 @@ function setFocus(e) {
   }
 }
 
+async function getAdvice() {
+  refreshButton.style.animation = "1s linear infinite rotation";
+  
+  const response = await fetch("https://api.adviceslip.com/advice");
+  const advice = (await response.json()).slip.advice;
+  blockquote.textContent = advice;
+  
+  refreshButton.style.animation = "";
+}
+
 name.addEventListener("focus", setName);
 name.addEventListener("blur", setName);
 focus.addEventListener("focus", setFocus);
 focus.addEventListener("blur", setFocus);
 updateButton.addEventListener("click", setBackgroundImage);
+refreshButton.addEventListener("click", getAdvice);
 
+getAdvice();
 setTime();
 setGreeting();
 getName();
