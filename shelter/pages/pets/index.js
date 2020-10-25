@@ -3,6 +3,7 @@ let fullPets = [];
 const petsElement = document.querySelector(".pets");
 const paginationButtons = document.querySelectorAll(".pagination-nav__button");
 const pageNumElement = document.querySelector(".pagination-nav__current-page");
+const popup = document.querySelector(".popup");
 
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "/assets/pets.json", true);
@@ -156,6 +157,12 @@ function createPetCard(id, pet) {
         <div class="pet__title">${pet.name}</div>
         <button class="pet__button">Learn more</button>`;
 
+    cardElement.addEventListener("click", function() {
+
+        fillPopup(fullPets[+this.dataset.id]);
+        showPopup();
+    });
+
     return cardElement;
 }
 
@@ -180,6 +187,51 @@ function outsideClick(event) {
     let outsideCover = document.querySelector(".outside-cover");
     if (event.target == outsideCover) {
         toggleMenu();
+    } else if (event.target == popup) {
+        closePopup();
+    }
+}
+
+function fillPopup(pet) {
+    popup.innerHTML = 
+        `<div class="popup-container">
+            <img src="${pet.img}" alt="${pet.name} photo" class="popup-container__image">
+            <div class="popup-container__text">
+                <div class="popup-container__header">
+                    <h3 class="popup-container__title">${pet.name}</h3>
+                    <h4 class="popup-container__subtitle">${pet.type} - ${pet.breed}</h4>
+                </div>
+                <div class="popup-container__description">${pet.description}</div>
+                <ul class="popup-summary">
+                    <li class="popup-summary__item"><strong class="popup-summary__property">Age: </strong>${pet.age}</li>
+                    <li class="popup-summary__item"><strong class="popup-summary__property">Inoculations: </strong>${pet.inoculations.join(", ")}</li>
+                    <li class="popup-summary__item"><strong class="popup-summary__property">Diseases: </strong>${pet.diseases.join(", ")}</li>
+                    <li class="popup-summary__item"><strong class="popup-summary__property">Parasites: </strong>${pet.parasites.join(", ")}</li>
+                </ul>
+            </div>
+            <button class="popup-container__close-button">
+                <img src="/assets/icons/vector.svg" alt="Close popup icon">
+            </button>
+        </div>`
+
+    document.querySelector(".popup-container__close-button").addEventListener("click", closePopup);
+}
+
+function showPopup() {
+    popup.classList.add("popup_active");
+}
+
+function closePopup() {
+    popup.classList.remove("popup_active");
+}
+
+function popupMouseOverEvent(event) {
+    let button = popup.querySelector(".popup-container__close-button");
+    
+    if(event.target == popup) {
+        button.classList.add("popup-container__close-button_active");
+    } else {
+        button.classList.remove("popup-container__close-button_active");
     }
 }
 
@@ -189,6 +241,7 @@ document.querySelector('.menu-icon-wrapper').addEventListener("click", toggleMen
 
 paginationButtons.forEach((button) => button.addEventListener("click", paginationButtonClick));
 
+popup.addEventListener("mouseover", popupMouseOverEvent);
 window.addEventListener("click", outsideClick);
 window.addEventListener("resize", () => {
     setPets();
