@@ -168,7 +168,7 @@ async function getForecast(e) {
 
   submitButton.style.animation = "1s linear infinite rotation";
   try {
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=8ae0c5c8cbc14f1fa32163939202510&q=${forecastInput.value}&days=3`);
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=8ae0c5c8cbc14f1fa32163939202510&q=${forecastInput.value}&days=3`);
     if(response.status === 400) {
       throw new BadRequest();
     }
