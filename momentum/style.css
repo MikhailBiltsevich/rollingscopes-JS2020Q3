@@ -124,7 +124,14 @@ body {
 }
 
 .current-weather-info {
+  display: flex;
   align-self: stretch;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .forecast-info {
@@ -172,16 +179,19 @@ body {
 .forecast-form__input::-webkit-input-placeholder {
   font-size: 1.5rem;
   opacity: 0.8;
+  color: white;
 }
 
 .forecast-form__input::-ms-input-placeholder {
   font-size: 1.5rem;
   opacity: 0.8;
+  color: white;
 }
 
 .forecast-form__input::-moz-placeholder {
   font-size: 1.5rem;
   opacity: 0.8;
+  color: white;
 }
 
 @keyframes rotation {
