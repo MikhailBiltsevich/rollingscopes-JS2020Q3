@@ -162,7 +162,6 @@ function createPetCard(id, pet) {
         fillPopup(fullPets[+this.dataset.id]);
         showPopup();
     });
-
     return cardElement;
 }
 
