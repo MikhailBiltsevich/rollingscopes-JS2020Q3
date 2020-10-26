@@ -305,6 +305,7 @@ $color-dark-m: #B2B2B2;
         line-height: 130%;
         letter-spacing: 0.06em;
         color: $color-dark-3xl;
+        transition: all 0.2s;
     
         &:hover {
             background-color: $color-primary-color-light;
@@ -518,6 +519,7 @@ $color-dark-m: #B2B2B2;
                 border-radius: 100%;
                 border: 2px solid $color-primary-color;
                 outline: none;
+                transition: all 0.2s;
             
                 &:hover {
                     cursor: pointer;
@@ -558,6 +560,7 @@ $color-dark-m: #B2B2B2;
             text-decoration: none;
             border-radius: 100px;
             border: none;
+            transition: all 0.2s;
 
             @media screen and (min-width: 320px) and (max-width: 767px) {
                 margin-top: 0;
@@ -599,16 +602,11 @@ $color-dark-m: #B2B2B2;
     justify-content: space-between;
     padding-bottom: 30px;
     align-items: center;
+    transition: all 0.2s;
 
     &:hover {
         background-color: $color-light-xl;
         box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-        cursor: pointer;
-    }
-
-    &:hover &__button { 
-        background-color: $color-primary-color-light;
-        border: 2px solid $color-primary-color-light;
         cursor: pointer;
     }
 
@@ -633,6 +631,7 @@ $color-dark-m: #B2B2B2;
         background-color: transparent;
         border: 2px solid $color-primary-color;
         outline: none;
+        transition: all 0.2s;
     
         &:hover {
             background-color: $color-primary-color-light;
@@ -854,6 +853,7 @@ $color-dark-m: #B2B2B2;
         font-size: 1.25rem;
         line-height: 115%;
         letter-spacing: 0.06em;
+        transition: all 0.2s;
 
         @media screen and (min-width: 320px) and (max-width: 767px) {
             font-size: 0.9375rem;

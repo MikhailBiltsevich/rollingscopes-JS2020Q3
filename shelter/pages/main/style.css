@@ -281,6 +281,7 @@
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #292929;
+  transition: all 0.2s;
 }
 .hero-content__button:hover {
   background-color: #FDDCC4;
@@ -491,6 +492,7 @@
   border-radius: 100%;
   border: 2px solid #F1CDB3;
   outline: none;
+  transition: all 0.2s;
 }
 .friends > .wrapper .slider__arrow:hover {
   cursor: pointer;
@@ -525,6 +527,7 @@
   text-decoration: none;
   border-radius: 100px;
   border: none;
+  transition: all 0.2s;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .friends > .wrapper .friends__button {
@@ -566,15 +569,11 @@
   justify-content: space-between;
   padding-bottom: 30px;
   align-items: center;
+  transition: all 0.2s;
 }
 .pet:hover {
   background-color: #FFFFFF;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-  cursor: pointer;
-}
-.pet:hover .pet__button {
-  background-color: #FDDCC4;
-  border: 2px solid #FDDCC4;
   cursor: pointer;
 }
 .pet__title {
@@ -597,6 +596,7 @@
   background-color: transparent;
   border: 2px solid #F1CDB3;
   outline: none;
+  transition: all 0.2s;
 }
 .pet__button:hover {
   background-color: #FDDCC4;
@@ -818,6 +818,7 @@
   font-size: 1.25rem;
   line-height: 115%;
   letter-spacing: 0.06em;
+  transition: all 0.2s;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .donation-info .donate-link {
