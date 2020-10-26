@@ -156,10 +156,28 @@ function activeLinkClick() {
 
 }
 
+const mobileHeader = document.querySelector(".mobile-wrapper");
+
 function toggleMenu() {
     document.querySelector(".menu-icon-wrapper").classList.toggle("menu-icon-wrapper_active");
-    document.querySelector(".menu").classList.toggle("menu_active");
+    let isOpen = document.querySelector(".menu").classList.toggle("menu_active");
     document.querySelector(".mask").classList.toggle("mask_active");
+
+    if (isOpen) {
+        mobileHeader.style.position = "fixed";
+        disableScrollBody();
+    } else {
+        mobileHeader.style.position = "";
+        enableScrollBody();
+    }
+}
+
+function disableScrollBody() {
+    document.body.style.overflow = "hidden";
+}
+
+function enableScrollBody() {
+    document.body.style.overflow = "";
 }
 
 document.querySelector(".menu-icon-wrapper").addEventListener("click", toggleMenu);
