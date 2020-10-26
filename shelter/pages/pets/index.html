@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <div class="mobile-wrapper">
+                <div class="logo">
+                    <h1 class="logo__title">Cozy House</h1>
+                    <h2 class="logo__subtitle">Shelter for pets in Boston</h2>
+                </div>
+                <div class="menu-icon-wrapper">
+                    <div class="menu-icon"></div>
+                </div>
+            </div>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a href="/pages/main/index.html" class="menu__link">About the shelter</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link menu__link_active">Our pets</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link menu__link_disabled">Help the shelter</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link menu__link_disabled">Contacts</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="friends">
+            <div class="wrapper">
+                <h3 class="friends__h3">
+                    Our friends who<br>are looking for a house
+                </h3>
+
+                <div class="pets">
+                    
+                </div>
+
+                <div class="pagination-nav">
+                    <button id="first-page" class="pagination-nav__button pagination-nav__button_disabled" disabled>&lt;&lt;</button>
+                    <button id="prev-page" class="pagination-nav__button pagination-nav__button_disabled" disabled>&lt;</button>
+                    <div class="pagination-nav__current-page" data-page-index="0">1</div>
+                    <button id="next-page" class="pagination-nav__button pagination-nav__button_enabled">&gt;</button>
+                    <button id="last-page" class="pagination-nav__button pagination-nav__button_enabled">&gt;&gt;</button>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="wrapper">
+                    <div class="contact">
+                        <h3 class="contact__h3">For questions and suggestions</h3>
+                        <a class="contact__link" href="mailto:email@shelter.com">
+                            <img class="contact__icon" src="/assets/icons/mail.svg" alt="mail icon">
+                            email@shelter.com
+                        </a>
+                        <a  class="contact__link" href="tel:+136745677554">
+                            <img class="contact__icon" src="/assets/icons/phone.svg" alt="phone icon">
+                            +13 674 567 75 54
+                        </a>
+                    </div>
+
+                    <div class="location">
+                        <h3 class="location__h3">We are waiting for your visit</h3>
+                        <a class="location__link" href="https://goo.gl/maps/6weNnoLdfoMkYFYs7" target="_blank">
+                            <img class="contact__icon" src="/assets/icons/pin.svg" alt="pin icon">
+                            1 Central Street, Boston<br>(entrance from the store)
+                        </a>
+                        <a class="location__link" href="https://goo.gl/maps/Xe4KJkcHLmvjC1AE8" target="_blank">
+                            <img class="contact__icon" src="/assets/icons/pin.svg" alt="pin icon">
+                            18 South Park, London
+                        </a>
+                    </div>
+                    <img class="footer__image" src="/assets/images/footer-puppy.png" alt="Puppy image">
+                </div>
+            </div>
+        </footer>
+    </main>
+    <div class="outside-cover"></div>
+    <div class="popup">
+        
+    </div>
+</body>
+</html>
