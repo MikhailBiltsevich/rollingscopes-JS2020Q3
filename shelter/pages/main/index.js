@@ -120,11 +120,13 @@ function fillPopup(pet) {
 
 function showPopup() {
     document.querySelector(".popup").classList.add("popup_active");
+    disableScrollBody();
 }
 
 function closePopup() {
     let popup = document.querySelector(".popup");
-        popup.classList.remove("popup_active");
+    popup.classList.remove("popup_active");
+    enableScrollBody();
 }
 
 function popupMouseOverEvent(event) {
