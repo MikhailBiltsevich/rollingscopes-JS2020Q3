@@ -546,6 +546,9 @@
   justify-content: space-between;
   width: 990px;
 }
+.pets_overflow {
+  overflow: hidden;
+}
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .pets {
     width: 580px;
@@ -559,6 +562,8 @@
 }
 
 .pet {
+  position: relative;
+  top: 0;
   background-color: #FAFAFA;
   border-radius: 9px;
   width: 270px;
@@ -569,7 +574,12 @@
   justify-content: space-between;
   padding-bottom: 30px;
   align-items: center;
-  transition: all 0.2s;
+  opacity: 1;
+  transition: box-shadow 0.2s, top 0.4s, opacity 0.2s;
+}
+.pet_hidden {
+  top: -500px;
+  opacity: 0;
 }
 .pet:hover {
   background-color: #FFFFFF;

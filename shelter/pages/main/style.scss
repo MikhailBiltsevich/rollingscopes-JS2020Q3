@@ -581,6 +581,10 @@ $color-dark-m: #B2B2B2;
     justify-content: space-between;
     width: 990px;
 
+    &_overflow {
+        overflow: hidden;
+    }
+
     @media screen and (min-width: 768px) and (max-width: 1279px) {
         width: 580px;
     }
@@ -592,6 +596,8 @@ $color-dark-m: #B2B2B2;
 }
 
 .pet {
+    position: relative;
+    top: 0;
     background-color: $color-light-s;
     border-radius: 9px;
     width: 270px;
@@ -602,7 +608,13 @@ $color-dark-m: #B2B2B2;
     justify-content: space-between;
     padding-bottom: 30px;
     align-items: center;
-    transition: all 0.2s;
+    opacity: 1;
+    transition: box-shadow 0.2s, top 0.4s, opacity 0.2s;
+
+    &_hidden {
+        top: -500px;
+        opacity: 0;
+    }
 
     &:hover {
         background-color: $color-light-xl;

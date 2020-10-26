@@ -26,11 +26,10 @@ function setSlide() {
     let container = document.querySelector(".pets");
     
     let oldIndexes = [];
-    for (pet of container.querySelectorAll(".pet")) {
+    let oldPets = container.querySelectorAll(".pet");
+    for (pet of oldPets) {
         oldIndexes.push(+pet.dataset.id);
     } 
-    
-    container.textContent = "";
 
     let petsCount;
     let clientWidth = document.documentElement.clientWidth;
@@ -45,13 +44,32 @@ function setSlide() {
         petsCount = 1;
     }
 
+    let newPets = [];
     while(indexes.length !== petsCount) {
         let index = Math.floor(Math.random() * 8);
         if(!indexes.includes(index) && !oldIndexes.includes(index)) {
             indexes.push(index);
             
-            container.append(createPetCard(pets[index].img, pets[index].name, index));
+            newPets.push(createPetCard(pets[index].img, pets[index].name, index));
         }
+    }
+
+    container.classList.add("pets_overflow");
+    oldPets.forEach(pet => pet.classList.add("pet_hidden"));
+    if (container.childElementCount === 0) {
+        newPets.forEach(pet => {
+            container.append(pet);
+        });
+        container.classList.remove("pets_overflow");
+    }
+    else {
+        setTimeout(() => {
+            container.textContent = "";
+            newPets.forEach(pet => {
+                container.append(pet);
+            });
+            container.classList.remove("pets_overflow");
+        }, 400);
     }
 }
 
