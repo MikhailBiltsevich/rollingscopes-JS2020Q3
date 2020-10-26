@@ -399,7 +399,7 @@ $color-dark-3xl: #292929;
     
     .wrapper {
         display: grid;
-        grid-template-columns: 279px 301px auto;
+        grid-template-columns: 279px 301px 300px;
         grid-template-rows: 310px;
         column-gap: 160px;
 
@@ -437,6 +437,7 @@ $color-dark-3xl: #292929;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: flex-start;
 
         @media screen and (min-width: 320px) and (max-width: 767px) {
             padding-top: 0;
