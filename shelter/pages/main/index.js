@@ -1,6 +1,6 @@
 let pets;
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "/assets/pets.json", true);
+xhr.open("GET", "../../assets/pets.json", true);
 xhr.send();
 
 xhr.onreadystatechange = function() {

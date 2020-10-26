@@ -6,7 +6,7 @@ const pageNumElement = document.querySelector(".pagination-nav__current-page");
 const popup = document.querySelector(".popup");
 
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "/assets/pets.json", true);
+xhr.open("GET", "../../assets/pets.json", true);
 xhr.send();
 
 xhr.onreadystatechange = function() {
@@ -193,7 +193,7 @@ function activeLinkClick() {
 }
 
 function redirectToMainPage() {
-    window.location.href = "/pages/main/index.html";
+    window.location.href = "../main/index.html";
 }
 
 function outsideClick(event) {
@@ -223,7 +223,7 @@ function fillPopup(pet) {
                 </ul>
             </div>
             <button class="popup-container__close-button">
-                <img src="/assets/icons/vector.svg" alt="Close popup icon">
+                <img src="../../assets/icons/vector.svg" alt="Close popup icon">
             </button>
         </div>`
 
