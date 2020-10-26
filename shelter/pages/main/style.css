@@ -188,6 +188,16 @@
   line-height: 160%;
   min-height: 27px;
   text-decoration: none;
+  color: #CDCDCD;
+  transition: all 0.1s linear;
+}
+.menu__link:not(.menu__link_disabled):hover {
+  color: #FAFAFA;
+  border-bottom: none;
+  cursor: pointer;
+}
+.menu__link_disabled {
+  cursor: default;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .menu__link {
@@ -197,14 +207,6 @@
 .menu__link_active {
   color: #FAFAFA;
   border-bottom: 3px solid #F1CDB3;
-  cursor: default;
-}
-.menu__link_disabled {
-  color: #CDCDCD;
-}
-.menu__link_disabled:hover {
-  color: #FAFAFA;
-  cursor: pointer;
 }
 
 .main {

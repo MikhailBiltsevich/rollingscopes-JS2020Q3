@@ -205,6 +205,18 @@ $color-dark-m: #B2B2B2;
     line-height: 160%;
     min-height: 27px;
     text-decoration: none;
+    color: $color-dark-s;
+    transition: all 0.1s linear;
+
+    &:not(.menu__link_disabled):hover {
+        color: $color-light-s;
+        border-bottom: none;
+        cursor: pointer;
+    }
+
+    &_disabled {
+        cursor: default;
+    }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
         font-size: 2rem;
@@ -213,16 +225,6 @@ $color-dark-m: #B2B2B2;
     &_active {
         color: $color-light-s;
         border-bottom: 3px solid $color-primary-color;
-        cursor: default;
-    }
-    
-    &_disabled {
-        color: $color-dark-s;
-    
-        &:hover {
-            color: $color-light-s;
-            cursor: pointer;
-        }
     }
 }
 
