@@ -167,8 +167,22 @@ function createPetCard(id, pet) {
 
 function toggleMenu() {
     document.querySelector(".menu-icon-wrapper").classList.toggle("menu-icon-wrapper_active");
-    document.querySelector('.menu').classList.toggle('menu_active');
+    let isOpen = document.querySelector('.menu').classList.toggle('menu_active');
     document.querySelector('.outside-cover').classList.toggle('outside-cover_active');
+
+    if (isOpen) {
+        disableScrollBody();
+    } else {
+        enableScrollBody();
+    }
+}
+
+function disableScrollBody() {
+    document.body.style.overflow = "hidden";
+}
+
+function enableScrollBody() {
+    document.body.style.overflow = "";
 }
 
 function activeLinkClick() {
