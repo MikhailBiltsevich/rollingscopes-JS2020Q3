@@ -232,10 +232,12 @@ function fillPopup(pet) {
 
 function showPopup() {
     popup.classList.add("popup_active");
+    disableScrollBody();
 }
 
 function closePopup() {
     popup.classList.remove("popup_active");
+    enableScrollBody();
 }
 
 function popupMouseOverEvent(event) {
