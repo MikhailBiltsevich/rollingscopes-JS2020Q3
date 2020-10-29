@@ -33,14 +33,31 @@ const Keyboard = {
         this.elements.keysContainer.classList.add("keyboard__keys");
         this.elements.keysContainer.append(this._createKeys());
 
-        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
-
         this._refreshKeys();
         
         this.elements.main.append(this.elements.keysContainer);
         document.body.append(this.elements.main);
 
         document.querySelectorAll(".use-keyboard-input").forEach(element => {
+            element.addEventListener("keydown", (e) => {
+                if (e.repeat) {
+                    return;
+                }
+
+                e.preventDefault();
+                const keyCode = e.code;
+                const virtualKey = this.elements.keys.find(key => key.dataset.code === keyCode);
+                virtualKey.classList.add("keyboard__key_pressed");
+                virtualKey.click();
+            });
+
+            element.addEventListener("keyup", (e) => {
+                e.preventDefault();
+                const keyCode = e.code;
+                const virtualKey = this.elements.keys.find(key => key.dataset.code === keyCode);
+                virtualKey.classList.remove("keyboard__key_pressed");
+            });
+
             element.addEventListener("focus", () => {
                 this.open(element.value, (keyValue) => {
                     if (keyValue === "" && element.selectionStart !== 0 && element.selectionStart === element.selectionEnd) {
@@ -166,6 +183,7 @@ const Keyboard = {
                     break;
             }
 
+            this.elements.keys.push(keyButton);
             fragment.append(keyButton);
 
             if(insertRowBreak) {

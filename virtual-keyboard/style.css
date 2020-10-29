@@ -53,7 +53,7 @@
     color: #000;
 }
 
-.keyboard__key:active {
+.keyboard__key:active, .keyboard__key_pressed {
     background: rgb(122, 122, 122);
 }
 
