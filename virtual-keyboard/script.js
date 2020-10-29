@@ -1,10 +1,13 @@
+import { KeyboardLayout } from './keyboard-layout.js';
 import { KeyboardLayoutEN } from './en.js';
+import { KeyboardLayoutRU } from './ru.js';
 
 const Keyboard = {
     elements: {
         main: null,
         keysContainer: null,
-        keys: []
+        keys: [],
+        languageKey: null
     },
 
     eventHandlers: {
@@ -17,7 +20,8 @@ const Keyboard = {
         value: "",
         keyValue: "",
         capsLock: false,
-        shift: false
+        shift: false,
+        language: "en"
     },
 
     init() {
@@ -54,21 +58,21 @@ const Keyboard = {
 
     _createKeys() {
         const fragment = document.createDocumentFragment();
-        const keysLayout = KeyboardLayoutEN;
+        const keyCodesLayout = KeyboardLayout;
 
         const createIcon = (iconName) => {
             return `<i class="material-icons">${iconName}</i>`
         }
 
-        keysLayout.forEach(key => {
+        keyCodesLayout.forEach(code => {
             const keyButton = document.createElement("button");
             keyButton.classList.add("keyboard__key");
             keyButton.setAttribute("type", "button");
-            keyButton.dataset.code = key.code;
+            keyButton.dataset.code = code;
 
-            const insertRowBreak = ["Backspace", "BracketRight", "Enter", "Hide"].indexOf(key.code) !== -1;
+            const insertRowBreak = ["Backspace", "BracketRight", "Enter", "Hide"].indexOf(code) !== -1;
 
-            switch (key.code) {
+            switch (code) {
                 case "Backspace":
                     keyButton.innerHTML = createIcon("backspace");
                     keyButton.classList.add("keyboard__key_wide");
@@ -124,9 +128,13 @@ const Keyboard = {
                         this._toggleShift();
                     });
                     break;
+                case "Language":
+                    this.elements.languageKey = keyButton;
+                    keyButton.addEventListener("click", () => {
+                        this._changeLanguage();
+                    });
+                    break;
                 default:
-                    keyButton.dataset.code = key.code;
-
                     keyButton.addEventListener("click", () => {
                         this.properties.keyValue = keyButton.textContent;
                         this._triggerEvent("oninput");
@@ -144,14 +152,21 @@ const Keyboard = {
         return fragment;
     },
 
+    _changeLanguage() {
+        this.properties.language = this.properties.language === "en" ? "ru" : "en";
+        this._refreshKeys();
+    },
+
     _refreshKeys() {
+        const keyboardLayout = this.properties.language === "en" ? KeyboardLayoutEN : KeyboardLayoutRU;
+        this.elements.languageKey.innerHTML = `<strong>${this.properties.language.toUpperCase()}</strong>`;
         for (const keyButton of this.elements.keys) {
             if (keyButton.childElementCount !== 0) {
                 continue;
             }
 
             const keyCode = keyButton.dataset.code;
-            const key = KeyboardLayoutEN.find(key => key.code === keyCode);
+            const key = keyboardLayout.find(key => key.code === keyCode);
 
             if (this.properties.capsLock) {
                 if (this.properties.shift) {
