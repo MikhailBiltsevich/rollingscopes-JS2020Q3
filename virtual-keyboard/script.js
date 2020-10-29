@@ -7,7 +7,8 @@ const Keyboard = {
         main: null,
         keysContainer: null,
         keys: [],
-        languageKey: null
+        languageKey: null,
+        input: null
     },
 
     eventHandlers: {
@@ -52,6 +53,7 @@ const Keyboard = {
                         this._toggleShift();
                     }
                 });
+                this.elements.input = element;
             });
         });
     },
@@ -132,6 +134,28 @@ const Keyboard = {
                     this.elements.languageKey = keyButton;
                     keyButton.addEventListener("click", () => {
                         this._changeLanguage();
+                    });
+                    break;
+                case "ArrowLeft":
+                    keyButton.innerHTML = createIcon("keyboard_arrow_left");
+                    keyButton.addEventListener("click", () => {
+                        if (this.elements.input.selectionStart === this.elements.input.selectionEnd) {
+                            this.elements.input.setSelectionRange(this.elements.input.selectionStart - 1, this.elements.input.selectionEnd - 1);
+                        } else {
+                            this.elements.input.selectionEnd = this.elements.input.selectionStart;
+                        }
+                        this.elements.input.focus();
+                    });
+                    break;
+                case "ArrowRight":
+                    keyButton.innerHTML = createIcon("keyboard_arrow_right");
+                    keyButton.addEventListener("click", () => {
+                        if (this.elements.input.selectionStart === this.elements.input.selectionEnd) {
+                            this.elements.input.setSelectionRange(this.elements.input.selectionStart + 1, this.elements.input.selectionEnd + 1);
+                        } else {
+                            this.elements.input.selectionStart = this.elements.input.selectionEnd;
+                        }
+                        this.elements.input.focus();
                     });
                     break;
                 default:
