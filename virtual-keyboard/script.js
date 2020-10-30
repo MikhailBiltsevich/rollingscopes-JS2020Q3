@@ -23,8 +23,11 @@ const Keyboard = {
         capsLock: false,
         shift: false,
         language: "en",
-        sound: true
+        sound: true,
+        speechRecord: false
     },
+
+    recognition: null,
 
     init() {
         this.elements.main = document.createElement("div");
@@ -90,6 +93,15 @@ const Keyboard = {
             }
             else {
                 return `<i class="material-icons">music_off</i>`;
+            }
+        }
+
+        const createMicIcon = () => {
+            if (!this.properties.speechRecord) {
+                return `<i class="material-icons">mic</i>`;
+            }
+            else {
+                return `<i class="material-icons">mic_off</i>`;
             }
         }
 
@@ -222,6 +234,36 @@ const Keyboard = {
                         keyButton.innerHTML = createSoundIcon();
                     });
                     break;
+                case "SpeechRecognition":
+                    this.recognition = new SpeechRecognition();
+                    this.recognition.interimResults = true;
+                    if (this.properties.language === "en") {
+                        this.recognition.lang = "en-GB";
+                    } else {
+                        this.recognition.lang = "ru-RU";
+                    }
+                    this.recognition.addEventListener("end", (e) => {
+                        console.log(e);
+                        if (this.properties.speechRecord) {
+                            this.recognition.start();
+                        }
+                    });
+
+                    this.recognition.addEventListener("result", (e) => {
+                        let text = Array.from(e.results).map(result => result[0]).map(result => result.transcript).join('');
+            
+                        this.elements.input.setRangeText(text, this.elements.input.selectionStart, this.elements.input.selectionEnd, "start");
+                        this.elements.input.selectionEnd = this.elements.input.selectionStart + text.length;
+                        if (e.results[0].isFinal) {
+                            this.elements.input.setRangeText(text, this.elements.input.selectionStart, this.elements.input.selectionEnd, "end");
+                        }
+                    });
+                    keyButton.innerHTML = createMicIcon();
+                    keyButton.addEventListener("click", () => {
+                        this._toggleMic();
+                        keyButton.innerHTML = createMicIcon();
+                    })
+                    break;
                 default:
                     keyButton.addEventListener("click", () => {
                         this.properties.keyValue = keyButton.textContent;
@@ -258,9 +300,27 @@ const Keyboard = {
         audio.play();
     },
 
+    _toggleMic() {
+        this.properties.speechRecord = !this.properties.speechRecord;
+
+        if (this.properties.speechRecord) {
+            this.recognition.start();
+        } else {
+            this.recognition.stop();
+        }
+
+        this.elements.input.focus();
+    },
+
     _changeLanguage() {
         this.properties.language = this.properties.language === "en" ? "ru" : "en";
         this._refreshKeys();
+
+        if (this.properties.language === "en") {
+            this.recognition.lang = "en-GB";
+        } else {
+            this.recognition.lang = "ru-RU";
+        }
     },
 
     _refreshKeys() {
@@ -322,5 +382,6 @@ const Keyboard = {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     Keyboard.init();
 });

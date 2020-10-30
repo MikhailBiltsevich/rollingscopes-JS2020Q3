@@ -3,5 +3,5 @@ export const KeyboardLayout = [
     "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight",
     "CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Backslash", "Enter",
     "ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash", "ShiftRight", "Hide",
-    "Language", "Sound", "Space", "ArrowLeft", "ArrowRight"
+    "Language", "Sound", "SpeechRecognition", "Space", "ArrowLeft", "ArrowRight"
 ];
