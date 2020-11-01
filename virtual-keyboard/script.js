@@ -108,19 +108,19 @@ const Keyboard = {
 
         const createSoundIcon = () => {
             if (this.properties.sound) {
-                return `<i class="material-icons">music_note</i>`;
+                return `<i class="material-icons">music_off</i>`;
             }
             else {
-                return `<i class="material-icons">music_off</i>`;
+                return `<i class="material-icons">music_note</i>`;
             }
         }
 
         const createMicIcon = () => {
             if (!this.properties.speechRecord) {
-                return `<i class="material-icons">mic_off</i>`;
+                return `<i class="material-icons">mic</i>`;
             }
             else {
-                return `<i class="material-icons">mic</i>`;
+                return `<i class="material-icons">mic_off</i>`;
             }
         }
 
