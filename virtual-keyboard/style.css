@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.use-keyboard-input {
+    display: block;
+    padding: 1rem;
+    outline: none;
+    font-size: 1.25rem;
+    font-family: 'Lato', sans-serif;
+    border: none;
+    border-bottom: 0.4rem solid rgb(233, 234, 238);
+    min-height: 300px;
+    width: 100%;
+}
+
+.keyboard {    
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    user-select: none;
+    background: rgb(233, 234, 238);
+    transition: bottom 0.5s ease-in;
+}
+
+.keyboard_hidden {
+    bottom: -100%;
+}
+
+.keyboard__keys {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.keyboard__key {
+    position: relative;
+    font-size: 1.05rem;
+    height: 2.8125rem;
+    margin: 3px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: top;
+    background: #fff;
+    color: #000;
+    box-shadow: 0 1px rgb(177, 179, 176);
+}
+
+.keyboard__key_span-2-col {
+    grid-column: span 2;
+}
+
+.keyboard__key_span-3-col {
+    grid-column: span 3;
+}
+
+.keyboard__key_span-4-col {
+    grid-column: span 4;
+}
+
+.keyboard__key_span-9-col {
+    grid-column: span 9;
+}
+
+.keyboard__key_span-14-col {
+    grid-column: span 14;
+}
+
+.keyboard__key:active, .keyboard__key_pressed {
+    background: rgb(230, 230, 230);
+}
+
+.keyboard__key_active-shift {
+    background: rgb(230, 230, 230);
+}
+
+.keyboard__key-activatable::after {
+    content: '';
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.keyboard__key_active::after {
+    background: #7bda78;
+}
+
+.keyboard__key_blue {
+    color: white;
+    background-color: rgb(26, 115, 233);
+}
+
+.keyboard__key_blue:active {
+    color: white;
+    background-color: rgb(24, 90, 187);
+}
