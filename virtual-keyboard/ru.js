@@ -65,11 +65,6 @@ export const KeyboardLayoutRU = [
         code: "Equal"
     },
     {
-        small: "backspace",
-        shift: null,
-        code: "Backspace"
-    },
-    {
         small: "й",
         shift: "Й",
         code: "KeyQ"
@@ -128,11 +123,6 @@ export const KeyboardLayoutRU = [
         small: "ъ",
         shift: "Ъ",
         code: "BracketRight"
-    },
-    {
-        small: "caps",
-        shift: null,
-        code: "CapsLock"
     },
     {
         small: "ф",
@@ -195,14 +185,9 @@ export const KeyboardLayoutRU = [
         code: "Backslash"
     },
     {
-        small: "enter",
-        shift: null,
-        code: "Enter"
-    },
-    {
-        small: "shift",
-        shift: null,
-        code: "ShiftLeft"
+        small: "\\",
+        shift: "/",
+        code: "IntlBackslash"
     },
     {
         small: "я",
@@ -253,20 +238,5 @@ export const KeyboardLayoutRU = [
         small: ".",
         shift: ",",
         code: "Slash"
-    },
-    {
-        small: "shift",
-        shift: null,
-        code: "ShiftRight"
-    },
-    {
-        small: "shift",
-        shift: null,
-        code: "Hide"
-    },
-    {
-        small: "space",
-        shift: null,
-        code: "Space"
     }
 ];

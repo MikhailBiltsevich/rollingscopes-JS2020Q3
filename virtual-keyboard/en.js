@@ -63,12 +63,7 @@ export const KeyboardLayoutEN = [
         small: "=",
         shift: "+",
         code: "Equal"
-    },
-    {
-        small: "backspace",
-        shift: null,
-        code: "Backspace"
-    },
+    },   
     {
         small: "q",
         shift: "Q",
@@ -128,11 +123,6 @@ export const KeyboardLayoutEN = [
         small: "]",
         shift: "}",
         code: "BracketRight"
-    },
-    {
-        small: "caps",
-        shift: null,
-        code: "CapsLock"
     },
     {
         small: "a",
@@ -195,14 +185,9 @@ export const KeyboardLayoutEN = [
         code: "Backslash"
     },
     {
-        small: "enter",
-        shift: null,
-        code: "Enter"
-    },
-    {
-        small: "shift",
-        shift: null,
-        code: "ShiftLeft"
+        small: "\\",
+        shift: "|",
+        code: "IntlBackslash"
     },
     {
         small: "z",
@@ -253,20 +238,5 @@ export const KeyboardLayoutEN = [
         small: "/",
         shift: "?",
         code: "Slash"
-    },
-    {
-        small: "shift",
-        shift: null,
-        code: "ShiftRight"
-    },
-    {
-        small: "shift",
-        shift: null,
-        code: "Hide"
-    },
-    {
-        small: "space",
-        shift: null,
-        code: "Space"
     }
 ];
