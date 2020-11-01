@@ -82,6 +82,10 @@
     background: rgb(230, 230, 230);
 }
 
+.keyboard__key_active-shift {
+    background: rgb(230, 230, 230);
+}
+
 .keyboard__key-activatable::after {
     content: '';
     top: 10px;
