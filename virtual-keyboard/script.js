@@ -117,10 +117,10 @@ const Keyboard = {
 
         const createMicIcon = () => {
             if (!this.properties.speechRecord) {
-                return `<i class="material-icons">mic</i>`;
+                return `<i class="material-icons">mic_off</i>`;
             }
             else {
-                return `<i class="material-icons">mic_off</i>`;
+                return `<i class="material-icons">mic</i>`;
             }
         }
 
