@@ -340,6 +340,11 @@ const Keyboard = {
 
     _toggleSound() {
         this.properties.sound = !this.properties.sound;
+        if (this.properties.sound) {
+            ModalWindow.show("Озвучивание нажатий виртуальных клавиш включено");
+        } else {
+            ModalWindow.show("Озвучивание нажатий виртуальных клавиш выключено");
+        }
     },
 
     _playSound(id) {
@@ -357,8 +362,10 @@ const Keyboard = {
 
         if (this.properties.speechRecord) {
             this.recognition.start();
+            ModalWindow.show("Голосовой ввод включен. Вы можете поставить курсов в необходимое место голосового ввода");
         } else {
             this.recognition.stop();
+            ModalWindow.show("Голосовой ввод выключен");
         }
     },
 
@@ -454,19 +461,28 @@ const ModalWindow = {
         this.elements.main = document.querySelector(".modal-window");
         this.elements.text = document.querySelector(".modal-window__text");
         this.elements.close = document.querySelector(".modal-window__close-button");
-        this.elements.close.addEventListener("click", this.close);
+        this.elements.close.addEventListener("click", () => {
+            this.close();
+        });
     },
 
     show(text) {
+        if(this.timerId) {
+            clearTimeout(this.timerId);
+        }
+
         this.elements.text.textContent = text;
         this.elements.main.classList.toggle(this.hiddenClass, false);
 
-        this.timerId = setTimeout(this.close, 10000);
+        this.timerId = setTimeout(() => {
+            this.close();
+        }, 5000);
     },
 
     close() {
-        clearTimeout(ModalWindow.timerId);
-        ModalWindow.elements.main.classList.toggle(ModalWindow.hiddenClass, true);
+        clearTimeout(this.timerId);
+        this.timerId = undefined;
+        this.elements.main.classList.toggle(this.hiddenClass, true);
     }
 }
 
