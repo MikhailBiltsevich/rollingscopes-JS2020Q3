@@ -440,6 +440,37 @@ const Keyboard = {
     }
 }
 
+const ModalWindow = {
+    elements: {
+        main: null,
+        text: null,
+        close: null
+    },
+
+    hiddenClass: "modal-window_hidden",
+    timerId: undefined,
+
+    init() {
+        this.elements.main = document.querySelector(".modal-window");
+        this.elements.text = document.querySelector(".modal-window__text");
+        this.elements.close = document.querySelector(".modal-window__close-button");
+        this.elements.close.addEventListener("click", this.close);
+    },
+
+    show(text) {
+        this.elements.text.textContent = text;
+        this.elements.main.classList.toggle(this.hiddenClass, false);
+
+        this.timerId = setTimeout(this.close, 10000);
+    },
+
+    close() {
+        clearTimeout(ModalWindow.timerId);
+        ModalWindow.elements.main.classList.toggle(ModalWindow.hiddenClass, true);
+    }
+}
+
 window.addEventListener("DOMContentLoaded", () => {
+    ModalWindow.init();
     Keyboard.init();
 });

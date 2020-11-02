@@ -110,3 +110,48 @@
     color: white;
     background-color: rgb(24, 90, 187);
 }
+
+.modal-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: top 0.8s ease-in-out;
+}
+
+.modal-window_hidden {
+    top: -100vh;
+}
+
+.modal-window__header {
+    display: flex;
+    position: relative;
+    color: white;
+    background-color: rgb(24, 90, 187);
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+}
+
+.modal-window__close-button {
+    position: absolute;
+    right: 1rem;
+    color: white;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-window__content {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    min-height: 10vmin;
+    background: rgb(233, 234, 238);
+    padding: 1rem 2rem;
+}
+
+.modal-window__text {
+    text-align: justify;
+}
