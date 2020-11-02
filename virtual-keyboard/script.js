@@ -47,6 +47,15 @@ const Keyboard = {
         this.elements.main.append(this.elements.keysContainer);
         document.body.append(this.elements.main);
 
+        const togglePressedKey = (keyCode, isKeyDown) => {
+            const virtualKey = this.elements.keys.find(key => key.dataset.code === keyCode);
+            if (!virtualKey) {
+                return;
+            }
+            virtualKey.classList.toggle("keyboard__key_pressed", isKeyDown);
+            return virtualKey;
+        };
+
         document.querySelectorAll(".use-keyboard-input").forEach(element => {
             this._updatePlaceholder(element);
             element.addEventListener("keydown", (e) => {
@@ -64,26 +73,16 @@ const Keyboard = {
                     return;
                 }
 
-                const keyCode = e.code;
-                const virtualKey = this.elements.keys.find(key => key.dataset.code === keyCode);
-                if (!virtualKey) {
-                    return;
-                }
-                virtualKey.classList.add("keyboard__key_pressed");
-                
-                if (!hasSpecificKey) {
+                const virtualKey = togglePressedKey(e.code, true);
+
+                if (!hasSpecificKey && virtualKey) {
                     virtualKey.dispatchEvent(new MouseEvent("click"));
                 }
             });
 
             element.addEventListener("keyup", (e) => {
                 e.preventDefault();
-                const keyCode = e.code;
-                const virtualKey = this.elements.keys.find(key => key.dataset.code === keyCode);
-                if (!virtualKey) {
-                    return;
-                }
-                virtualKey.classList.remove("keyboard__key_pressed");
+                togglePressedKey(e.code, false);
             });
 
             element.addEventListener("focus", () => {
