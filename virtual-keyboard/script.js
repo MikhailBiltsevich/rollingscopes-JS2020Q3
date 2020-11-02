@@ -48,6 +48,7 @@ const Keyboard = {
         document.body.append(this.elements.main);
 
         document.querySelectorAll(".use-keyboard-input").forEach(element => {
+            this._updatePlaceholder(element);
             element.addEventListener("keydown", (e) => {
                 const hasSpecificKey = 
                     (e.altKey && !e.code.startsWith("Alt")) || 
@@ -71,7 +72,7 @@ const Keyboard = {
                 virtualKey.classList.add("keyboard__key_pressed");
                 
                 if (!hasSpecificKey) {
-                    virtualKey.click();
+                    virtualKey.dispatchEvent(new MouseEvent("click"));
                 }
             });
 
@@ -133,24 +134,20 @@ const Keyboard = {
             switch (code) {
                 case "Backspace":
                     keyButton.innerHTML = createIcon("backspace");
+                    keyButton.dataset.soundId = code;
 
                     keyButton.addEventListener("click", () => {
                         this.properties.keyValue = "";
-                        if (this.properties.sound) {
-                            this._playSound(code);
-                        }
                         this._triggerEvent("oninput");
                     });
                     break;
                 case "CapsLock":
                     keyButton.innerHTML = createIcon("keyboard_capslock");
                     keyButton.classList.add("keyboard__key-activatable");
+                    keyButton.dataset.soundId = code;
 
                     keyButton.addEventListener("click", () => {
                         this._toggleCapsLock();
-                        if (this.properties.sound) {
-                            this._playSound(code);
-                        }
                         keyButton.classList.toggle("keyboard__key_active", this.properties.capsLock);
                     });
 
@@ -160,20 +157,16 @@ const Keyboard = {
 
                     keyButton.addEventListener("click", () => {
                         this.properties.keyValue = "\t";
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                         this._triggerEvent("oninput");
                     });
                     break;
                 case "Enter":
                     keyButton.innerHTML = createIcon("keyboard_return");
+                    keyButton.dataset.soundId = code;
 
                     keyButton.addEventListener("click", () => {
                         this.properties.keyValue = "\n";
-                        if (this.properties.sound) {
-                            this._playSound(code);
-                        }
                         this._triggerEvent("oninput");
                     });
                     break;
@@ -183,9 +176,7 @@ const Keyboard = {
 
                     keyButton.addEventListener("click", () => {
                         this.close();
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                         this._triggerEvent("onclose");
                     });
                     break;
@@ -194,21 +185,24 @@ const Keyboard = {
 
                     keyButton.addEventListener("click", () => {
                         this.properties.keyValue = " ";
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                         this._triggerEvent("oninput");
                     });
                     break;
                 case "ShiftLeft":
                 case "ShiftRight":
                     keyButton.innerHTML = createIcon("expand_less");
+                    keyButton.dataset.soundId = code;
 
                     keyButton.addEventListener("click" ,() => {
-                        if (this.properties.sound) {
-                            this._playSound(code);
-                        }
                         this._toggleShift();
+                        if (this.properties.shift) {
+                            keyButton.classList.toggle("keyboard__key_active-shift", this.properties.shift);
+                        } else {
+                            this.elements.keys
+                                .filter(key => key.dataset.code.startsWith("Shift"))
+                                .forEach(shiftKey => shiftKey.classList.toggle("keyboard__key_active-shift", this.properties.shift));
+                        }
                     });
                     break;
                 case "ControlLeft":
@@ -216,9 +210,7 @@ const Keyboard = {
                     keyButton.innerHTML = `<span>Ctrl</span>`;
 
                     keyButton.addEventListener("click" ,() => {
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                     });
                     break;
                 case "AltLeft":
@@ -226,17 +218,14 @@ const Keyboard = {
                     keyButton.innerHTML = `<span>Alt</span>`;
 
                     keyButton.addEventListener("click" ,() => {
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                     });
                     break;
                 case "Language":
                     this.elements.languageKey = keyButton;
+                    keyButton.dataset.soundId = code;
+
                     keyButton.addEventListener("click", () => {
-                        if (this.properties.sound) {
-                            this._playSound(code);
-                        }
                         this._changeLanguage();
                     });
                     break;
@@ -248,9 +237,7 @@ const Keyboard = {
                         } else {
                             this.elements.input.selectionEnd = this.elements.input.selectionStart;
                         }
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                     });
                     break;
                 case "ArrowRight":
@@ -261,17 +248,13 @@ const Keyboard = {
                         } else {
                             this.elements.input.selectionStart = this.elements.input.selectionEnd;
                         }
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                     });
                     break;
                 case "Sound":
                     keyButton.innerHTML = createSoundIcon();
                     keyButton.addEventListener("click", () => {
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
                         this._toggleSound();
                         keyButton.innerHTML = createSoundIcon();
                     });
@@ -289,6 +272,7 @@ const Keyboard = {
                     });
                     keyButton.innerHTML = createMicIcon();
                     keyButton.addEventListener("click", () => {
+                        keyButton.dataset.soundId = this.properties.language;
                         this._toggleMic();
                         keyButton.innerHTML = createMicIcon();
                     })
@@ -296,14 +280,18 @@ const Keyboard = {
                 default:
                     keyButton.addEventListener("click", (e) => {
                         this.properties.keyValue = keyButton.textContent;
-                        if (this.properties.sound) {
-                            this._playSound(`${this.properties.language}Key`);
-                        }
+                        keyButton.dataset.soundId = this.properties.language;
 
                         this._triggerEvent("oninput"); 
                     });
                     break;
             }
+
+            keyButton.addEventListener("click", (e) => {
+                if (e.isTrusted && this.properties.sound) {
+                    this._playSound(keyButton.dataset.soundId);
+                }
+            })
 
             if (code !== "Hide") {
                 keyButton.addEventListener("click", () => {
@@ -355,8 +343,8 @@ const Keyboard = {
         this.properties.sound = !this.properties.sound;
     },
 
-    _playSound(keyCode) {
-        const audio = document.querySelector(`audio[data-key-code="${keyCode}"]`);
+    _playSound(id) {
+        const audio = document.querySelector(`audio[data-id="${id}"]`);
         if (!audio) {
             return;
         }
@@ -382,6 +370,16 @@ const Keyboard = {
             localStorage.setItem("keyboardLang", this.properties.language);
         
             this._refreshKeys();
+            this._updatePlaceholder();
+    },
+
+    _updatePlaceholder(input) {
+        const placeholderText = this.properties.language === BCP47.ru ? "Нажмите здесь" : "Click here";
+        if (input) {
+            input.placeholder = placeholderText
+        } else {
+            this.elements.input.placeholder = placeholderText;
+        }
     },
 
     _refreshKeys() {
@@ -427,8 +425,6 @@ const Keyboard = {
 
     _toggleShift() {
         this.properties.shift = !this.properties.shift;
-        const key = this.elements.keys.find(key => key.dataset.code.startsWith("Shift"));
-        key.classList.toggle("keyboard__key_active-shift", this.properties.shift);
         this._refreshKeys();
     },
 
