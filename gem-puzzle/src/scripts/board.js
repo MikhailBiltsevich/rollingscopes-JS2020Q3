@@ -3,6 +3,8 @@ export const Board = {
     chips: [],
     emptyChip: null,
     childrens: [],
+    sizes: [3, 4, 5, 6, 7, 8],
+    targetSize: 4,
 
     init() {
         this.element = document.createElement("div");
@@ -11,11 +13,11 @@ export const Board = {
     
     _setGrid() {
         this.element.classList.add("board");
-        this.element.classList.add("board_size-4");
+        this.element.classList.add(`board_size-${this.targetSize}`);
     },
 
     createElements() {
-        for (let i = 1; i <  4 * 4; i++) {
+        for (let i = 1; i <  Math.pow(this.targetSize, 2); i++) {
             const chip = document.createElement("div");
             chip.classList.add("board__chip");
             chip.textContent = chip.dataset.id = i;
@@ -41,9 +43,9 @@ export const Board = {
     hasSolve() {
         const rowEmptyChip = Math.trunc(this.childrens.indexOf(this.emptyChip) / 4) + 1;
         const chips = this.childrens.filter(chip => chip !== this.emptyChip);
+        let sum = 0;
 
         for (let i = 0; i < chips.length; i++) {
-            let sum = 0;
             const chipValue = +chips[i].dataset.id;
 
             for (let j = i + 1; j < chips.length; j++) {
@@ -52,12 +54,11 @@ export const Board = {
                     sum++;
                 }
             }
-
-            if ((sum + rowEmptyChip) % 2 !== 0) {
-                return false;
-            }
         }
-
+        
+        if ((sum + rowEmptyChip) % 2 !== 0) {
+            return false;
+        }
         return true;
     },
 
