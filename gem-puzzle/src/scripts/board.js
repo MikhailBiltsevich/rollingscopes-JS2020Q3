@@ -1,3 +1,5 @@
+import { Movement } from "./movement";
+
 export const Board = {
     element: null,
     chips: [],
@@ -9,6 +11,15 @@ export const Board = {
     init() {
         this.element = document.createElement("div");
         this._setGrid();
+
+        this.element.addEventListener("click", (event) => {
+            const targetElement = event.target;
+            if (targetElement.classList.contains("board__chip")) {
+                if (Movement.canMove(targetElement)) {
+                    Movement.move(targetElement);
+                }
+            }
+        });
     },
     
     _setGrid() {
@@ -41,7 +52,7 @@ export const Board = {
     },
 
     hasSolve() {
-        const rowEmptyChip = Math.trunc(this.childrens.indexOf(this.emptyChip) / 4) + 1;
+        const rowEmptyChip = Math.trunc(this.childrens.indexOf(this.emptyChip) / this.targetSize) + 1;
         const chips = this.childrens.filter(chip => chip !== this.emptyChip);
         let sum = 0;
 
