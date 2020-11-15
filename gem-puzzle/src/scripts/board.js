@@ -7,12 +7,17 @@ export const Board = {
     childrens: [],
     sizes: [3, 4, 5, 6, 7, 8],
     targetSize: 4,
+    isDragging: false,
 
     init() {
         this.element = document.createElement("div");
         this._setGrid();
 
         this.element.addEventListener("click", (event) => {
+            if (Board.isDragging) {
+                Board.isDragging = false;
+                return;
+            }
             const targetElement = event.target;
             if (targetElement.classList.contains("board__chip")) {
                 if (Movement.canMove(targetElement)) {
@@ -34,6 +39,47 @@ export const Board = {
             chip.textContent = chip.dataset.id = i;
             this.chips.push(chip);
             this.childrens.push(chip);
+
+            chip.onmousedown = function(event) {
+                event.preventDefault();
+                let shiftX = event.clientX - chip.getBoundingClientRect().left;
+                let shiftY = event.clientY - chip.getBoundingClientRect().top;
+                moveAt(event.pageX, event.pageY);
+                const cell = document.createElement("div");
+                cell.classList.add("base-chip-position");
+                chip.before(cell);
+                const size = chip.offsetWidth;
+                chip.style.width = chip.style.height = size + 'px';
+                chip.style.position = 'absolute';
+                document.onmouseup = mouseUp;
+                document.onmousemove = mouseMove;
+
+                function moveAt(pageX, pageY) {
+                    chip.style.left = pageX - shiftX + 'px';
+                    chip.style.top = pageY - shiftY + 'px';
+                }
+
+                function mouseMove(e) {
+                    e.preventDefault();
+                    console.log("onmousemove");
+                    moveAt(e.pageX, e.pageY);
+                    Board.isDragging = true;
+
+                    chip.style.display = "none";
+                    if (Board.emptyChip === document.elementFromPoint(e.clientX, e.clientY)) {
+                        Board.isDragging = false;
+                    }
+                    chip.style.display = null;
+                }
+    
+                function mouseUp() {
+                    chip.style.width = chip.style.height = null;
+                    chip.style.position = null;
+                    cell.remove();
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
         }
 
         this.emptyChip = document.createElement("div");
