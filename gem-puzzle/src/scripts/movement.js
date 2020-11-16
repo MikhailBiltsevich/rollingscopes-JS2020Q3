@@ -1,4 +1,5 @@
 import { Board } from "./board";
+import { Game } from "./game";
 
 export const Movement = {
     moves: 0,
@@ -9,7 +10,12 @@ export const Movement = {
 
     init() {
         this.element = document.createElement("div");
-        this.element.textContent = this.moves;
+        this.update();
+    },
+
+    restart() {
+        this.moves = 0;
+        this.update();
     },
 
     canMove(chip) {
@@ -43,10 +49,18 @@ export const Movement = {
         this._incrementMoves();
 
         this.chipIndex = this.emptyIndex = undefined;
+
+        if (Game.isSolved()) {
+            Game.end();
+        }
     },
 
     _incrementMoves() {
         this.moves++;
-        this.element.textContent = this.moves;
+        this.update();
+    },
+
+    update () {
+        this.element.textContent = `Moves: ${this.moves}`;
     }
 }
