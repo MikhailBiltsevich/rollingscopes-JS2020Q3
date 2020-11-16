@@ -2,16 +2,16 @@ import { Movement } from "./movement";
 
 export const Board = {
     element: null,
-    chips: [],
     emptyChip: null,
     childrens: [],
+    idChips: [],
     sizes: [3, 4, 5, 6, 7, 8],
     targetSize: 4,
+    selectedSize: undefined,
     isDragging: false,
 
     init() {
         this.element = document.createElement("div");
-        this._setGrid();
 
         this.element.addEventListener("click", (event) => {
             if (Board.isDragging) {
@@ -25,67 +25,95 @@ export const Board = {
                 }
             }
         });
+        
+        this.setGrid();
+        this.createIdChips();
+        this.createElements();
+        this.setChips();
     },
     
-    _setGrid() {
+    setGrid() {
         this.element.classList.add("board");
+        if (this.selectedSize) {
+            this.element.classList.remove(`board_size-${this.targetSize}`);
+            this.targetSize = this.selectedSize;
+            this.selectedSize = undefined;
+        }
+
         this.element.classList.add(`board_size-${this.targetSize}`);
     },
 
+    createIdChips() {
+        this.idChips = [...Array(Math.pow(this.targetSize, 2)).keys()]
+        this.idChips.push(this.idChips.shift());
+    },
+
+    load() {
+        this.setGrid();
+        this.clear();
+        this.createElements();
+        this.setChips();
+    },
+
     createElements() {
-        for (let i = 1; i <  Math.pow(this.targetSize, 2); i++) {
+        this.childrens = [];
+        for (let i = 0; i <  this.idChips.length; i++) {
+            const id = this.idChips[i];
             const chip = document.createElement("div");
-            chip.classList.add("board__chip");
-            chip.textContent = chip.dataset.id = i;
-            this.chips.push(chip);
+            if (id !== 0) {
+                chip.classList.add("board__chip");
+                chip.onmousedown = this.drag;
+                chip.textContent = chip.dataset.id = id;
+            } else {
+                this.emptyChip = chip;
+                chip.dataset.id = id;
+                this.emptyChip.classList.add("board__empty");
+            }
+            
             this.childrens.push(chip);
 
-            chip.onmousedown = function(event) {
-                event.preventDefault();
-                let shiftX = event.clientX - chip.getBoundingClientRect().left;
-                let shiftY = event.clientY - chip.getBoundingClientRect().top;
-                moveAt(event.pageX, event.pageY);
-                const cell = document.createElement("div");
-                cell.classList.add("base-chip-position");
-                chip.before(cell);
-                const size = chip.offsetWidth;
-                chip.style.width = chip.style.height = size + 'px';
-                chip.style.position = 'absolute';
-                document.onmouseup = mouseUp;
-                document.onmousemove = mouseMove;
+        }
+    },
 
-                function moveAt(pageX, pageY) {
-                    chip.style.left = pageX - shiftX + 'px';
-                    chip.style.top = pageY - shiftY + 'px';
-                }
+    drag(event) {
+        event.preventDefault();
+        const chip = event.currentTarget;
+        let shiftX = event.clientX - chip.getBoundingClientRect().left;
+        let shiftY = event.clientY - chip.getBoundingClientRect().top;
+        moveAt(event.pageX, event.pageY);
+        const cell = document.createElement("div");
+        cell.classList.add("base-chip-position");
+        chip.before(cell);
+        const size = chip.offsetWidth;
+        chip.style.width = chip.style.height = size + 'px';
+        chip.style.position = 'absolute';
+        document.onmouseup = mouseUp;
+        document.onmousemove = mouseMove;
 
-                function mouseMove(e) {
-                    e.preventDefault();
-                    console.log("onmousemove");
-                    moveAt(e.pageX, e.pageY);
-                    Board.isDragging = true;
-
-                    chip.style.display = "none";
-                    if (Board.emptyChip === document.elementFromPoint(e.clientX, e.clientY)) {
-                        Board.isDragging = false;
-                    }
-                    chip.style.display = null;
-                }
-    
-                function mouseUp() {
-                    chip.style.width = chip.style.height = null;
-                    chip.style.position = null;
-                    cell.remove();
-                    document.onmouseup = null;
-                    document.onmousemove = null;
-                }
-            }
+        function moveAt(pageX, pageY) {
+            chip.style.left = pageX - shiftX + 'px';
+            chip.style.top = pageY - shiftY + 'px';
         }
 
-        this.emptyChip = document.createElement("div");
-        this.emptyChip.dataset.id = 0;
-        this.emptyChip.classList.add("board__empty");
-        this.childrens.push(this.emptyChip);
+        function mouseMove(e) {
+            e.preventDefault();
+            moveAt(e.pageX, e.pageY);
+            Board.isDragging = true;
+
+            chip.style.display = "none";
+            if (Board.emptyChip === document.elementFromPoint(e.clientX, e.clientY)) {
+                Board.isDragging = false;
+            }
+            chip.style.display = null;
+        }
+
+        function mouseUp() {
+            chip.style.width = chip.style.height = null;
+            chip.style.position = null;
+            cell.remove();
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
     },
 
     mixChips() {
@@ -119,7 +147,16 @@ export const Board = {
         return true;
     },
 
+    clear() {
+        this.element.textContent = '';
+    },
+
     setChips() {
         this.childrens.forEach(children => this.element.append(children));
+        this._updateIdChipsOrder();
+    },
+
+    _updateIdChipsOrder() {
+        this.idChips = this.childrens.map(children => +children.dataset.id);
     }
 }
