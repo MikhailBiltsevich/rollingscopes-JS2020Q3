@@ -56,10 +56,11 @@ export const Board = {
 
   createElements() {
     this.childrens = [];
+    const emptyChipId = 0;
     for (let i = 0; i < this.idChips.length; i += 1) {
       const id = this.idChips[i];
       const chip = document.createElement('div');
-      if (id !== 0) {
+      if (id !== emptyChipId) {
         chip.classList.add('board__chip');
         chip.onmousedown = this.drag;
         chip.textContent = id;
