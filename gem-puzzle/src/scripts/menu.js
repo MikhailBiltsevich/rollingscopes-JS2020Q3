@@ -1,5 +1,6 @@
 import { Board } from './board';
 import { Game } from './game';
+import { Storage } from './storage';
 import { Timer } from './timer';
 
 export const Menu = {
@@ -64,10 +65,6 @@ export const Menu = {
         });
 
         this.items.loadGame = Menu.createItem('li', 'Load game', () => {
-          if (!localStorage.getItem('saves')) {
-            return;
-          }
-
           Menu.pages.saves.init();
           Menu.setPage(Menu.pages.saves.element);
         });
@@ -91,20 +88,28 @@ export const Menu = {
         this.element = document.createElement('div');
         this.element.classList.add('saved-games-page');
 
-        const games = JSON.parse(localStorage.getItem('saves'));
-        let gameslist = document.createElement('ol');
-        gameslist.classList.add('saved-games-page__list');
-        for (let i = 0; i < games.length; i += 1) {
-          let item = document.createElement('li');
-          item.classList.add('saved-games-page__item');
-          item.textContent = games[i].info;
-          item.addEventListener('click', () => {
-            Game.load(games[i]);
-          });
-          gameslist.append(item);
+        const games = Storage.get('saves', []);
+        if (games.length > 0) {
+          let gameslist = document.createElement('ol');
+          gameslist.classList.add('saved-games-page__list');
+          for (let i = 0; i < games.length; i += 1) {
+            let item = document.createElement('li');
+            item.classList.add('saved-games-page__item');
+            item.textContent = games[i].info;
+            item.addEventListener('click', () => {
+              Game.load(games[i]);
+            });
+            gameslist.append(item);
+          }
+
+          this.element.append(gameslist);
+        } else {
+          const infoElement = document.createElement('div');
+          infoElement.textContent = "You hasn't saved games yet";
+          infoElement.classList.add('saved-games-page__info');
+          this.element.append(infoElement);
         }
 
-        this.element.append(gameslist);
         this.element.append(Menu.backButton.element);
       }
     },
@@ -115,8 +120,8 @@ export const Menu = {
         this.element = document.createElement('div');
         this.element.classList.add('score-page');
 
-        if (localStorage.getItem('scores')) {
-          const scores = JSON.parse(localStorage.getItem('scores'));
+        const scores = Storage.get('scores', []);
+        if (scores.length > 0) {
           scores.sort((a, b) => a.moves - b.moves);
           let scoresList = document.createElement('ol');
           scoresList.classList.add('score-page__list');
