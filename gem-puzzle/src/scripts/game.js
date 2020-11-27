@@ -2,6 +2,8 @@ import { Board } from './board';
 import { Menu } from './menu';
 import { Movement } from './movement';
 import { Save } from './save';
+import { Score } from './score';
+import { Storage } from './storage';
 import { Timer } from './timer';
 
 export const Game = {
@@ -34,20 +36,14 @@ export const Game = {
       Movement.moves
     );
 
-    let saves = localStorage.getItem('saves');
-    if (saves === null) {
-      saves = [];
-    } else {
-      saves = JSON.parse(saves);
-    }
-
+    const saves = Storage.get('saves', []);
     const maxSavesCount = 5;
 
     if (saves.length === maxSavesCount) {
       saves.shift();
     }
     saves.push(save);
-    localStorage.setItem('saves', JSON.stringify(saves));
+    Storage.set('saves', saves);
   },
 
   load(save) {
@@ -90,12 +86,7 @@ export const Game = {
   },
 
   setScore() {
-    let scores = localStorage.getItem('scores');
-    if (scores === null) {
-      scores = [];
-    } else {
-      scores = JSON.parse(localStorage.getItem('scores'));
-    }
+    const scores = Storage.get('scores', []);
 
     scores.sort((a, b) => a.moves - b.moves);
 
@@ -105,12 +96,14 @@ export const Game = {
       scores.pop();
     }
 
-    scores.push({
-      date: (new Date()).toLocaleDateString(),
-      moves: Movement.moves,
-      size: `${Board.targetSize}x${Board.targetSize}`
-    });
+    const score = new Score(
+      (new Date()).toLocaleDateString(),
+      `${Board.targetSize}x${Board.targetSize}`,
+      Movement.moves
+    );
 
-    localStorage.setItem('scores', JSON.stringify(scores));
+    scores.push(score);
+
+    Storage.set('scores', scores);
   }
 };
