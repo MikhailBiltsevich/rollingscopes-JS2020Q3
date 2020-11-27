@@ -41,7 +41,9 @@ export const Game = {
       saves = JSON.parse(saves);
     }
 
-    if (saves.length === 5) {
+    const maxSavesCount = 5;
+
+    if (saves.length === maxSavesCount) {
       saves.shift();
     }
     saves.push(save);
@@ -97,7 +99,9 @@ export const Game = {
 
     scores.sort((a, b) => a.moves - b.moves);
 
-    if (scores.length === 10) {
+    const maxScoresCount = 10;
+
+    if (scores.length === maxScoresCount) {
       scores.pop();
     }
 
