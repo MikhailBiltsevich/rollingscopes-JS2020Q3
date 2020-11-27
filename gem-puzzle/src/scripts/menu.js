@@ -147,8 +147,8 @@ export const Menu = {
 
         let sizesList = document.createElement('select');
         sizesList.classList.add('settings-page__sizes');
-        for (let i = 0; i < Board.sizes.length; i += 1) {
-          const size = Board.sizes[i];
+        for (let i = Board.sizes.min; i <= Board.sizes.max; i += 1) {
+          const size = i;
           const option = document.createElement('option');
           if (size === Board.targetSize) {
             option.selected = true;

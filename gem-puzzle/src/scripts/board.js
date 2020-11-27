@@ -5,7 +5,10 @@ export const Board = {
   emptyChip: null,
   childrens: [],
   idChips: [],
-  sizes: [3, 4, 5, 6, 7, 8],
+  sizes: {
+    min: 3,
+    max: 8
+  },
   targetSize: 4,
   selectedSize: undefined,
   isDragging: false,
