@@ -30,7 +30,7 @@ export const Timer = {
   },
 
   increment() {
-    this.sec = 1;
+    this.sec += 1;
 
     if (this.sec === 60) {
       this.min += 1;
