@@ -14,6 +14,73 @@ export const Menu = {
         loadGame: null,
         scores: null,
         settings: null
+      },
+
+      init() {
+        this.element = document.createElement('div');
+        this.element.classList.add('main-page');
+
+        this.container = document.createElement('ul');
+        this.container.classList.add('main-page__list');
+
+        this.initHeader();
+        this.createItems();
+        this.appendItems();
+      },
+
+      initHeader() {
+        this.header = document.createElement('ul');
+        this.header.classList.add('main-page__header');
+
+        const continueItem = Menu.createItem('li', 'continue', () => {
+          Game.continue();
+        });
+        continueItem.classList.add('main-page__header-item');
+
+        const saveGameItem = Menu.createItem('li', 'save game', () => {
+          Game.save();
+        });
+        saveGameItem.classList.add('main-page__header-item');
+
+        this.header.append(continueItem, saveGameItem);
+      },
+
+      appendItems() {
+        const menuItemKeys = Object.keys(this.items);
+        for (let i = 0; i < menuItemKeys.length; i += 1) {
+          const key = menuItemKeys[i];
+
+          this.items[key].classList.add('menu-item');
+          this.container.append(this.items[key]);
+        }
+
+        this.element.append(this.header);
+        this.element.append(this.container);
+      },
+
+      createItems() {
+        this.items.newGame = Menu.createItem('li', 'New Game', () => {
+          Game.start();
+        });
+
+        this.items.loadGame = Menu.createItem('li', 'Load game', () => {
+          if (!localStorage.getItem('saves')) {
+            return;
+          }
+
+          Menu.pages.saves.init();
+          Menu.setPage(Menu.pages.saves.element);
+        });
+
+        this.items.scores = Menu.createItem('li', 'Best Scores', () => {
+          Menu.pages.scores.init();
+          Menu.setPage(Menu.pages.scores.element);
+        });
+
+        this.items.settings = Menu.createItem('li', 'Settings', () => {
+          Menu.pages.settings.init();
+          Menu.setPage(Menu.pages.settings.element);
+        });
       }
     },
 
@@ -122,98 +189,39 @@ export const Menu = {
     this.element = document.createElement('div');
     this.element.classList.add('menu');
 
-    this.pages.main.element = document.createElement('div');
-    this.pages.main.element.classList.add('main-page');
-
-    this.button = document.createElement('button');
-    this.button.classList.add('menu__button');
-    this.button.textContent = 'Menu';
-    this.button.addEventListener('click', () => {
+    this.button = this.createItem('button', 'Menu', () => {
       this.show();
     });
+    this.button.classList.add('menu__button');
 
-    this.pages.main.header = document.createElement('ul');
-    this.pages.main.header.classList.add('main-page__header');
-
-    const continueItem = document.createElement('li');
-    continueItem.textContent = 'continue';
-    continueItem.classList.add('main-page__header-item');
-    continueItem.addEventListener('click', () => {
-      Game.continue();
-    });
-
-    const saveGameItem = document.createElement('li');
-    saveGameItem.textContent = 'save game';
-    saveGameItem.classList.add('main-page__header-item');
-    saveGameItem.addEventListener('click', () => {
-      Game.save();
-    });
-
-    this.pages.main.header.append(continueItem, saveGameItem);
-
-    this.pages.main.container = document.createElement('ul');
-    this.pages.main.container.classList.add('main-page__list');
-
-    this.pages.main.items.newGame = document.createElement('li');
-    this.pages.main.items.newGame.textContent = 'New Game';
-    this.pages.main.items.newGame.addEventListener('click', () => {
-      Game.start();
-    });
-
-    this.pages.main.items.loadGame = document.createElement('li');
-    this.pages.main.items.loadGame.textContent = 'Load game';
-    this.pages.main.items.loadGame.addEventListener('click', () => {
-      if (!localStorage.getItem('saves')) {
-        return;
-      }
-
-      this.pages.saves.init();
-      this.element.textContent = '';
-      this.element.append(this.pages.saves.element);
-    });
-
-    this.pages.main.items.scores = document.createElement('li');
-    this.pages.main.items.scores.textContent = 'Best Scores';
-    this.pages.main.items.scores.addEventListener('click', () => {
-      this.pages.scores.init();
-      this.element.textContent = '';
-      this.element.append(this.pages.scores.element);
-    });
-
-    this.pages.main.items.settings = document.createElement('li');
-    this.pages.main.items.settings.textContent = 'Settings';
-    this.pages.main.items.settings.addEventListener('click', () => {
-      this.pages.settings.init();
-      this.element.textContent = '';
-      this.element.append(this.pages.settings.element);
-    });
-
-    const menuItemKeys = Object.keys(this.pages.main.items);
-    for (let i = 0; i < menuItemKeys.length; i += 1) {
-      const key = menuItemKeys[i];
-
-      this.pages.main.items[key].classList.add('menu-item');
-      this.pages.main.container.append(this.pages.main.items[key]);
-    }
-
-    this.pages.main.element.append(this.pages.main.header);
-    this.pages.main.element.append(this.pages.main.container);
+    this.pages.main.init();
 
     this.show();
   },
 
+  createItem(tagName, content, handler) {
+    const item = document.createElement(tagName);
+    item.textContent = content;
+    item.addEventListener('click', handler);
+
+    return item;
+  },
+
   show() {
     Timer.pause();
-    this.element.textContent = '';
-    this.element.append(this.pages.main.element);
+    this.setPage(this.pages.main.element);
     this.pages.main.header.classList.toggle('main-page__header_hidden', !Game.isStarted);
     this.element.classList.toggle('menu__hidden', false);
   },
 
   close() {
-    this.element.textContent = '';
-    this.element.append(this.pages.main.element);
+    this.setPage(this.pages.main.element);
     this.element.classList.toggle('menu__hidden', true);
+  },
+
+  setPage(pageElement) {
+    this.element.textContent = '';
+    this.element.append(pageElement);
   },
 
   back() {
