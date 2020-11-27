@@ -38,11 +38,9 @@ export const Movement = {
   },
 
   move(chip) {
-    if (this.chipIndex !== undefined && this.emptyIndex !== undefined) {
-      Board.childrens.splice(this.chipIndex, 1, Board.emptyChip);
-      Board.childrens.splice(this.emptyIndex, 1, chip);
-      Board.setChips();
-    }
+    Board.childrens.splice(this.chipIndex, 1, Board.emptyChip);
+    Board.childrens.splice(this.emptyIndex, 1, chip);
+    Board.setChips();
 
     this.incrementMoves();
 
