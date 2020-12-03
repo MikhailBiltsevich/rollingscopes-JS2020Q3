@@ -44,4 +44,18 @@ export default class View {
     this.codeBlock.innerText = level.code;
     this.renderedBlock.innerHTML = level.code;
   }
+
+  bindCheckAnswer(handler) {
+    const elementHandler = (event) => {
+      if (event.code !== 'Enter') {
+        return;
+      }
+
+      const selector = event.target.value;
+      handler(selector);
+    };
+
+    this.input.addEventListener('keydown', elementHandler);
+    this.submitButton.addEventListener('click', elementHandler);
+  }
 }
