@@ -1,0 +1,252 @@
+%element {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    animation: coloring 0.5s infinite ease-in-out alternate;
+}
+
+arc-de-triomphe {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/arc-de-triomphe.svg');
+}
+
+athena {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/athena.svg');
+}
+
+aztec-pyramid {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/aztec-pyramid.svg');
+}
+
+big-ben {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/big-ben.svg');
+}
+
+borobudur {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/borobudur.svg');
+}
+
+brandenburg-gate {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/brandenburg-gate.svg');
+}
+
+budapest {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/budapest.svg');
+}
+
+burj-al-arab {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/burj-al-arab.svg');
+}
+
+cathedral-of-saint-basil {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/cathedral-of-saint-basil.svg');
+}
+
+christ-the-redeemer {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/christ-the-redeemer.svg');
+}
+
+cloud-gate {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/cloud-gate.svg');
+}
+
+cn-tower {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/cn-tower.svg');
+}
+
+colosseum {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/colosseum.svg');
+}
+
+easter-island {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/easter-island.svg');
+}
+
+eiffel-tower {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/eiffel-tower.svg');
+}
+
+forbidden-city {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/forbidden-city.svg');
+}
+
+fuji-mountain {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/fuji-mountain.svg');
+}
+
+gateway-arch {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/gateway-arch.svg');
+}
+
+gherkin {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/gherkin.svg');
+}
+
+great-wall-of-china {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/great-wall-of-china.svg');
+}
+
+kaaba {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/kaaba.svg');
+}
+
+kinderdijk-windmills {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/kinderdijk-windmills.svg');
+}
+
+london-eye {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/london-eye.svg');
+}
+
+louvre {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/louvre.svg');
+}
+
+merlion {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/merlion.svg');
+}
+
+monas {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/monas.svg');
+}
+
+obelisk {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/obelisk.svg');
+}
+
+pagoda {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/pagoda.svg');
+}
+
+pantheon {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/pantheon.svg');
+}
+
+petra {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/petra.svg');
+}
+
+pisa-tower {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/pisa-tower.svg');
+}
+
+pyramid {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/pyramid.svg');
+}
+
+rialto-bridge {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/rialto-bridge.svg');
+}
+
+san-francisco {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/san-francisco.svg');
+}
+
+seoul-tower {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/seoul-tower.svg');
+}
+
+space-needle {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/space-needle.svg');
+}
+
+sphinx {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/sphinx.svg');
+}
+
+statue-of-liberty {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/statue-of-liberty.svg');
+}
+
+stockholm {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/stockholm.svg');
+}
+
+stonehenge {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/stonehenge.svg');
+}
+
+sydney-opera-house {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/sydney-opera-house.svg');
+}
+
+taj-mahal {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/taj-mahal.svg');
+}
+
+tokyo-tower {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/tokyo-tower.svg');
+}
+
+torii {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/torii.svg');
+}
+
+tower-of-ejer-bavnehoj {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/tower-of-ejer-bavnehoj.svg');
+}
+
+tower-bridge {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/tower-bridge.svg');
+}
+
+twin-towers {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/twin-towers.svg');
+}
+
+washington-monument {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/washington-monument.svg');
+}
+
+wat-phra-kaew {
+    @extend %element;
+    background-image: url('./assets/img/landmarks-monuments/wat-phra-kaew.svg');
+}
