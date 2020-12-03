@@ -52,11 +52,13 @@ export default class View {
 
   bindCheckAnswer(handler) {
     const elementHandler = (event) => {
-      if (event.code !== 'Enter') {
-        return;
+      if (event.type === 'keydown') {
+        if (event.code !== 'Enter') {
+          return;
+        }
       }
 
-      const selector = event.target.value;
+      const selector = this.input.value;
       handler(selector);
     };
 
