@@ -31,8 +31,8 @@ export default class View {
   }
 
   fillLevelsList(levels) {
-    const listItem = View.createElement('li', 'levels-list__item');
     for (let i = 0; i < levels.length; i += 1) {
+      const listItem = View.createElement('li', 'levels-list__item');
       const level = levels[i];
       listItem.dataset.id = level.id;
       listItem.textContent = `Level ${level.id}`;
