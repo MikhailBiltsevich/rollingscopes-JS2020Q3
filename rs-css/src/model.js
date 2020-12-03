@@ -25,8 +25,4 @@ export default class Model {
   setCurrentLevel(id) {
     this.remoteStorage.setCurrentLevel(id);
   }
-
-  getLevels() {
-    return this.levels;
-  }
 }
