@@ -15,6 +15,9 @@ export default class Controller {
 
   handleCheckAnswer(selector) {
     const level = this.model.getCurrentLevel();
-    console.log(selector === level.selector);
+    if (selector === level.selector) {
+      this.model.setCompleted(level.id);
+      this.view.markAsCompleted(level.id);
+    }
   }
 }

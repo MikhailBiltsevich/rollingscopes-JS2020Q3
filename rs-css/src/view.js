@@ -40,6 +40,11 @@ export default class View {
     }
   }
 
+  markAsCompleted(id) {
+    const listItem = this.levelsList.querySelector(`[data-id='${id}']`);
+    listItem.classList.add('completed');
+  }
+
   setLevel(level) {
     this.codeBlock.innerText = level.code;
     this.renderedBlock.innerHTML = level.code;

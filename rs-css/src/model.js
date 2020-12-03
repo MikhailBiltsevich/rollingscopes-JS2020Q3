@@ -10,6 +10,7 @@ export default class Model {
   setCompleted(id) {
     const level = this.levels.find(item => item.id === id);
     level.isCompleted = true;
+    this.remoteStorage.setCompletedLevelsId(id);
   }
 
   getCurrentLevel() {
