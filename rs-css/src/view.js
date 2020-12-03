@@ -40,8 +40,8 @@ export default class View {
     }
   }
 
-  setLevel(code) {
-    this.codeBlock.innerText = code;
-    this.renderedBlock.innerHTML = code;
+  setLevel(level) {
+    this.codeBlock.innerText = level.code;
+    this.renderedBlock.innerHTML = level.code;
   }
 }
