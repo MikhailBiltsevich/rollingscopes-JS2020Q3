@@ -13,7 +13,12 @@ export default class Model {
   }
 
   getCurrentLevel() {
-    return this.remoteStorage.getCurrentLevel();
+    const id = this.remoteStorage.getCurrentLevelId();
+    if (typeof id === 'number') {
+      return this.levels.find(item => item.id === id);
+    }
+
+    return this.levels[0];
   }
 
   setCurrentLevel(id) {

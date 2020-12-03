@@ -8,9 +8,9 @@ export const LocalStorageWrapper = {
     localStorage.setItem(this.keys.currentLevel, JSON.stringify(id));
   },
 
-  getCurrentLevel() {
+  getCurrentLevelId() {
     const value = localStorage.getItem(this.keys.currentLevel);
-    return value ? JSON.parse(value) : value;
+    return JSON.parse(value);
   },
 
   setCompletedLevelsId(values) {
