@@ -48,6 +48,16 @@ export default class View {
   setLevel(level) {
     this.codeBlock.innerText = level.code;
     this.renderedBlock.innerHTML = level.code;
+
+    const setLevelAsActive = () => {
+      const className = 'active';
+      const newlistItem = this.levelsList.querySelector(`[data-id='${level.id}']`);
+      const activeItems = this.levelsList.querySelectorAll(className);
+      activeItems.forEach(item => item.classList.remove(className));
+      newlistItem.classList.add(className);
+    };
+
+    setLevelAsActive();
   }
 
   bindCheckAnswer(handler) {
