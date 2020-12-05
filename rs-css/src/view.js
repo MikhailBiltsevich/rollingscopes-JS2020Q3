@@ -58,6 +58,12 @@ export default class View {
     };
 
     setLevelAsActive();
+
+    const clearSelector = () => {
+      this.input.value = '';
+    };
+
+    clearSelector();
   }
 
   bindCheckAnswer(handler) {
