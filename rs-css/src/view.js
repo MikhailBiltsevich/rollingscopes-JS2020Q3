@@ -52,7 +52,7 @@ export default class View {
     const setLevelAsActive = () => {
       const className = 'active';
       const newlistItem = this.levelsList.querySelector(`[data-id='${level.id}']`);
-      const activeItems = this.levelsList.querySelectorAll(className);
+      const activeItems = this.levelsList.querySelectorAll(`.${className}`);
       activeItems.forEach(item => item.classList.remove(className));
       newlistItem.classList.add(className);
     };
@@ -74,5 +74,15 @@ export default class View {
 
     this.input.addEventListener('keydown', elementHandler);
     this.submitButton.addEventListener('click', elementHandler);
+  }
+
+  bindLevelSelected(handler) {
+    const elementHandler = (event) => {
+      const id = +event.target.dataset.id;
+
+      handler(id);
+    };
+
+    this.levelsList.querySelectorAll('li').forEach(item => item.addEventListener('click', elementHandler));
   }
 }
