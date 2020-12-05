@@ -2,6 +2,12 @@ export default class View {
   constructor() {
     this.root = document.getElementById('root');
 
+    this.header = View.createElement('div', 'header');
+    this.title = View.createElement('h2');
+    this.description = View.createElement('div');
+
+    this.header.append(this.title, this.description);
+
     this.answerBlock = View.createElement('div', 'answer');
 
     this.input = View.createElement('input', 'answer__input');
@@ -18,7 +24,13 @@ export default class View {
 
     this.levelsList = View.createElement('ul', 'levels-list');
 
-    this.root.append(this.answerBlock, this.renderedBlock, this.codeBlock, this.levelsList);
+    this.root.append(
+      this.header,
+      this.answerBlock,
+      this.renderedBlock,
+      this.codeBlock,
+      this.levelsList
+    );
   }
 
   static createElement(tagName, classToken) {
@@ -46,6 +58,8 @@ export default class View {
   }
 
   setLevel(level) {
+    this.title.textContent = level.title;
+    this.description.textContent = level.description;
     this.codeBlock.innerText = level.code;
     this.renderedBlock.innerHTML = level.code;
 
