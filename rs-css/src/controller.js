@@ -5,6 +5,7 @@ export default class Controller {
 
     this.onInitialLoad(this.model.levels);
     this.view.bindCheckAnswer(this.handleCheckAnswer.bind(this));
+    this.view.bindLevelSelected(this.handleOnLevelClick.bind(this));
   }
 
   onInitialLoad(levels) {
@@ -19,5 +20,11 @@ export default class Controller {
       this.model.setCompleted(level.id);
       this.view.markAsCompleted(level.id);
     }
+  }
+
+  handleOnLevelClick(id) {
+    this.model.setCurrentLevel(id);
+    const level = this.model.getCurrentLevel();
+    this.view.setLevel(level);
   }
 }
