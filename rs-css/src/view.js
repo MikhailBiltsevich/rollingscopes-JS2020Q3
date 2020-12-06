@@ -63,6 +63,11 @@ export default class View {
     this.codeBlock.innerText = level.code;
     this.renderedBlock.innerHTML = level.code;
 
+    const animationClassName = 'animated';
+
+    this.renderedBlock.querySelectorAll(level.selector)
+      .forEach(item => item.classList.add(animationClassName));
+
     const setLevelAsActive = () => {
       const className = 'active';
       const newlistItem = this.levelsList.querySelector(`[data-id='${level.id}']`);
