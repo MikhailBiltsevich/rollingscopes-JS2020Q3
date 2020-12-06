@@ -84,6 +84,14 @@ export default class View {
     listItem.classList.add('completed');
   }
 
+  showWrongAnswer() {
+    const className = 'wrong-answer';
+    this.answerBlock.classList.add(className);
+    setTimeout(() => {
+      this.answerBlock.classList.remove(className);
+    }, 1000);
+  }
+
   setLevel(level) {
     this.title.textContent = level.title;
     this.description.textContent = level.description;

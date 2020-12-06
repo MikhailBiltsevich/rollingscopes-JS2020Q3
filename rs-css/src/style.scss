@@ -66,6 +66,7 @@ body {
     align-self: start;
     display: flex;
     border-radius: 2rem;
+    transition: box-shadow 0.5s linear;
     
     &__input {
         font-size: 1rem;
@@ -86,6 +87,10 @@ body {
             background-color: $button-hover-color;
         }
     }
+}
+
+.wrong-answer {
+    box-shadow: 0 0 0.5rem 0.5rem #ba3608;
 }
 
 .level-render {

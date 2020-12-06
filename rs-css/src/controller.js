@@ -25,6 +25,8 @@ export default class Controller {
     if (selector === level.selector) {
       this.model.setCompleted(level.id);
       this.view.markAsCompleted(level.id);
+    } else {
+      this.view.showWrongAnswer();
     }
   }
 
