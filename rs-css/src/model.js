@@ -8,9 +8,15 @@ export default class Model {
   }
 
   setCompleted(id) {
+    const completedLevelsId = this.remoteStorage.getCompletedLevels() || [];
+
     const level = this.levels.find(item => item.id === id);
     level.isCompleted = true;
-    this.remoteStorage.setCompletedLevelsId(id);
+    if (!completedLevelsId.includes(id)) {
+      completedLevelsId.push(id);
+    }
+
+    this.remoteStorage.setCompletedLevelsId(completedLevelsId);
   }
 
   getCurrentLevel() {
@@ -20,6 +26,10 @@ export default class Model {
     }
 
     return this.levels[0];
+  }
+
+  getCompletedLevels() {
+    return this.remoteStorage.getCompletedLevels() || [];
   }
 
   setCurrentLevel(id) {

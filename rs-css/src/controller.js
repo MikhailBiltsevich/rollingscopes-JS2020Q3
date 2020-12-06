@@ -9,6 +9,12 @@ export default class Controller {
   }
 
   onInitialLoad(levels) {
+    const completedLevels = this.model.getCompletedLevels();
+    for (let i = 0; i < levels.length; i += 1) {
+      const level = levels[i];
+      level.isCompleted = completedLevels.includes(level.id);
+    }
+
     this.view.fillLevelsList(levels);
     const level = this.model.getCurrentLevel();
     this.view.setLevel(level);

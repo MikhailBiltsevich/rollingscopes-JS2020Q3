@@ -70,6 +70,9 @@ export default class View {
     for (let i = 0; i < levels.length; i += 1) {
       const listItem = View.createElement('li', 'levels-list__item');
       const level = levels[i];
+      if (level.isCompleted) {
+        listItem.classList.add('completed');
+      }
       listItem.dataset.id = level.id;
       listItem.textContent = `Level ${level.id}`;
       this.levelsList.append(listItem);

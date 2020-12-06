@@ -19,6 +19,6 @@ export const LocalStorageWrapper = {
 
   getCompletedLevels() {
     const values = localStorage.getItem(this.keys.completedLevels);
-    return values ? JSON.parse(values) : values;
+    return JSON.parse(values);
   }
 };
