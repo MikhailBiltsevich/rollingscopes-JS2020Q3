@@ -1,0 +1,160 @@
+@import 'custom-elements';
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+$bg-color: #22272b;
+$bg-block-color: #424242;
+$text-color: #f6fbff;
+$button-color: #2695ee;
+$button-hover-color: #2989d5;
+$green-color: #5fac00;
+$radius-size: 1rem;
+$shadow-color: #1f2229;
+
+%block-shadow {
+    box-shadow: 0 0 1rem 0.5rem $shadow-color;
+}
+
+* {
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    color: $text-color;
+    font-family: 'Barlow', sans-serif;
+}
+
+body {
+    background-color: $bg-color;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#root {
+    display: grid;
+    
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: 1fr 1fr 2fr 4fr 1fr;
+    grid-template-areas: 
+    'head head'
+    'top right-column'
+    'middle right-column'
+    'bottom right-column'
+    'footer footer';
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    width: 1000px;
+    height: 700px;
+}
+
+.header {
+    justify-self: center;
+    align-self: center;
+    grid-area: head;
+}
+
+.answer {
+    @extend %block-shadow;
+    grid-area: top;
+    justify-self: stretch;
+    align-self: start;
+    display: flex;
+    border-radius: 2rem;
+    
+    &__input {
+        font-size: 1rem;
+        padding: 1rem;
+        flex-grow: 1;
+        background-color: $bg-block-color;
+        border-radius: $radius-size 0 0 $radius-size;
+    }
+
+    &__submit {
+        background-color: $button-color;
+        font-size: 1rem;
+        padding: 1rem;
+        cursor: pointer;
+        border-radius: 0 $radius-size $radius-size 0;
+
+        &:hover {
+            background-color: $button-hover-color;
+        }
+    }
+}
+
+.level-render {
+    grid-area: middle;
+    justify-self: stretch;
+    align-self: stretch;
+    display: flex;
+    justify-content: space-around;
+    background-size: contain;
+    background-position: center;
+    justify-items: center;
+    align-items: center;
+}
+
+@keyframes fading {
+    from { filter: opacity(1); }
+    to { filter: opacity(0.5); }
+}
+
+.code {
+    font-family: 'IBM Plex Mono', monospace;
+    @extend %block-shadow;
+    border-radius: $radius-size;
+    background-color: $bg-block-color;
+    padding: 1.5rem;
+    grid-area: bottom;
+    justify-self: stretch;
+    align-self: stretch;
+    font-size: 1.5rem;
+}
+
+.levels-list {
+    border-radius: $radius-size;
+    @extend %block-shadow;
+    grid-area: right-column;
+    list-style-type: none;
+    background-color: $bg-block-color;
+    
+    &__item {
+        cursor: pointer;
+        padding: 0.5rem 0;
+
+        &:hover, &.active {
+            background-color: $shadow-color;
+        }
+
+        &::before {
+            color: $text-color;
+            content: '\2714';
+            padding: 0 1rem;
+            opacity: 0.25;
+            transition: all 0.5s ease-in;
+        }
+
+        &.completed::before {
+            color: $green-color;
+            opacity: 1;
+        }
+    }
+}
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .course-link {
+        align-self: stretch;
+        width: 10rem;
+    }
+}
