@@ -24,12 +24,36 @@ export default class View {
 
     this.levelsList = View.createElement('ul', 'levels-list');
 
+    const createFooter = () => {
+      this.footer = View.createElement('footer', 'footer');
+
+      const courseLink = View.createElement('a', 'course-link');
+      const schoolLogo = View.createElement('img');
+      schoolLogo.src = './src/assets/img/rs_school_js.svg';
+      courseLink.href = 'https://rs.school/js/';
+      courseLink.append(schoolLogo);
+      courseLink.target = '_blank';
+
+      const gitHubLink = View.createElement('a');
+      gitHubLink.textContent = 'Mikhail Biltsevich';
+      gitHubLink.href = 'https://github.com/MikhailBiltsevich';
+      gitHubLink.target = '_blank';
+
+      const productionYear = View.createElement('div');
+      productionYear.textContent = '2020';
+
+      this.footer.append(gitHubLink, productionYear, courseLink);
+    };
+
+    createFooter();
+
     this.root.append(
       this.header,
       this.answerBlock,
       this.renderedBlock,
       this.codeBlock,
-      this.levelsList
+      this.levelsList,
+      this.footer
     );
   }
 
