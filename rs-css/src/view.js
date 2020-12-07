@@ -1,4 +1,5 @@
 import microlight from 'microlight';
+import schoolLogoLink from './assets/img/rs_school_js.svg';
 
 export default class View {
   constructor() {
@@ -34,7 +35,7 @@ export default class View {
 
       const courseLink = View.createElement('a', 'course-link');
       const schoolLogo = View.createElement('img');
-      schoolLogo.src = './src/assets/img/rs_school_js.svg';
+      schoolLogo.src = schoolLogoLink;
       courseLink.href = 'https://rs.school/js/';
       courseLink.append(schoolLogo);
       courseLink.target = '_blank';
