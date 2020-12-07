@@ -39,7 +39,7 @@ body {
 #root {
     display: grid;
     
-    grid-template-columns: 5fr 3fr;
+    grid-template-columns: 7fr 3fr;
     grid-template-rows: 1fr 1fr 2fr 4fr 1fr;
     grid-template-areas: 
     'head head'
@@ -49,8 +49,22 @@ body {
     'footer footer';
     column-gap: 1.5rem;
     row-gap: 1.5rem;
-    width: 1000px;
-    height: 700px;
+    min-width: 1020px;
+    min-height: 750px;
+
+    @media screen and (max-width: 1023px) {
+        min-width: auto;
+        min-height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, auto);
+        grid-template-areas: 
+        'head'
+        'top'
+        'middle'
+        'bottom'
+        'right-column'
+        'footer';
+    }
 }
 
 .header {
