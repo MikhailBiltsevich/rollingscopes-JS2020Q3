@@ -121,7 +121,7 @@ body {
     @extend %block-shadow;
     border-radius: $radius-size;
     background-color: $bg-block-color;
-    padding: 1.5rem;
+    padding: 0.2rem;
     grid-area: bottom;
     justify-self: stretch;
     align-self: stretch;

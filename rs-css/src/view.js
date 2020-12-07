@@ -23,7 +23,9 @@ export default class View {
     this.renderedBlock = View.createElement('div', 'level-render');
 
     this.codeBlock = View.createElement('code', 'code');
-    this.codeBlock.classList.add('microlight');
+    this.codeText = View.createElement('pre');
+    this.codeText.classList.add('microlight');
+    this.codeBlock.append(this.codeText);
 
     this.levelsList = View.createElement('ul', 'levels-list');
 
@@ -98,7 +100,7 @@ export default class View {
   setLevel(level) {
     this.title.textContent = level.title;
     this.description.textContent = level.description;
-    this.codeBlock.innerText = level.code;
+    this.codeText.textContent = level.code;
     microlight.reset();
     this.renderedBlock.innerHTML = level.code;
 
