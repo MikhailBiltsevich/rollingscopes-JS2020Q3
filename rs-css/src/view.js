@@ -79,7 +79,7 @@ export default class View {
         listItem.classList.add('completed');
       }
       listItem.dataset.id = level.id;
-      listItem.textContent = `Level ${level.id}`;
+      listItem.textContent = level.title;
       this.levelsList.append(listItem);
     }
   }
