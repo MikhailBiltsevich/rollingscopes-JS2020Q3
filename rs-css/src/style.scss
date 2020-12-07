@@ -98,11 +98,17 @@ body {
     justify-self: stretch;
     align-self: stretch;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     background-size: contain;
     background-position: center;
     justify-items: center;
     align-items: center;
+
+    * {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 @keyframes fading {
@@ -119,7 +125,7 @@ body {
     grid-area: bottom;
     justify-self: stretch;
     align-self: stretch;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .levels-list {

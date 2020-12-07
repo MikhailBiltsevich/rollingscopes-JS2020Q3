@@ -1,9 +1,21 @@
 %element {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     background-size: contain;
-    animation: coloring 0.5s infinite ease-in-out alternate;
+    margin: 1rem;
+}
+
+.animated {
+    animation: fading 0.5s infinite ease-in-out alternate none;
+}
+
+.rotated {
+    transform: rotate(25deg);;
+}
+
+country, usa, tower {
+    border: 0.25rem solid #424242;
 }
 
 arc-de-triomphe {
