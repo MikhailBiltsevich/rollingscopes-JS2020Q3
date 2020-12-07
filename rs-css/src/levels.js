@@ -6,20 +6,20 @@ export const Levels = [
     selector: '*',
     isCompleted: false,
     code: `
-      <london-eye></london-eye>
-      <big-ben></big-ben>
-      <tower-bridge></tower-bridge>
+      <attraction name="london-eye"></attraction>
+      <attraction name="big-ben"></attraction>
+      <attraction name="tower-bridge"></attraction>
       `
   },
   {
     id: 2,
     title: 'Just Big Ben',
     description: 'You have to select only big-ben element',
-    selector: 'big-ben',
+    selector: '[name="big-ben"]',
     isCompleted: false,
     code: `
-      <big-ben></big-ben>
-      <brandenburg-gate></brandenburg-gate>
+      <attraction name="big-ben"></attraction>
+      <attraction name="brandenburg-gate"></attraction>
       `
   },
   {
@@ -29,10 +29,9 @@ export const Levels = [
     selector: '#stockholm-city',
     isCompleted: false,
     code: `
-      <stockholm></stockholm>
-      <pisa-tower></pisa-tower>
-      <stockholm id="stockholm-city"></stockholm>
-      <stonehenge></stonehenge>
+      <city name="stockholm"></city>
+      <city name="stockholm" id="stockholm-city"></city>
+      <monument name="stonehenge"></monument>
       `
   },
   {
@@ -42,118 +41,100 @@ export const Levels = [
     selector: '.rotated',
     isCompleted: false,
     code: `
-      <statue-of-liberty></statue-of-liberty>
-      <statue-of-liberty class="rotated"></statue-of-liberty>
-      <san-francisco></san-francisco>
+      <attraction name="statue-of-liberty"></attraction>
+      <attraction name="statue-of-liberty" class="rotated"></attraction>
+      <attraction name="san-francisco"></attraction>
       `
   },
   {
     id: 5,
     title: 'Rotated colesseum',
     description: 'You have to select one element',
-    selector: 'colosseum.rotated',
+    selector: '[name="colosseum"].rotated',
     isCompleted: false,
     code: `
-      <gateway-arch class="rotated"></gateway-arch>
-      <colosseum class="rotated"></colosseum>
-      <colosseum></colosseum>
+      <attraction name="gateway-arch" class="rotated"></attraction>
+      <attraction name="colosseum" class="rotated"></attraction>
+      <attraction name="colosseum"></attraction>
       `
   },
   {
     id: 6,
-    title: 'Buildings in the USA',
-    description: 'You have to select all elements inside <usa> element',
-    selector: 'usa *',
+    title: 'Attractions in the USA',
+    description: 'You have to select attractions inside <usa> element',
+    selector: 'usa attraction',
     isCompleted: false,
     code: `
       <usa>
-        <san-francisco></san-francisco>
-        <statue-of-liberty></statue-of-liberty>
-        <washington-monument></washington-monument>
+        <attraction name="san-francisco"></attraction>
+        <attraction name="statue-of-liberty"></attraction>
+        <monument name="washington-monument"></monument>
       </usa>
-      <san-francisco></san-francisco>
-      <washington-monument></washington-monument>
+      <attraction name="san-francisco"></attraction>
+      <attraction name="washington-monument"></attraction>
       `
   },
   {
     id: 7,
-    title: 'Too many attractions',
-    description: 'You have to select only last attraction in each named coutry',
-    selector: 'country[name] *:last-child',
+    title: 'Towers',
+    description: 'You have to select towers in Italy and Japan',
+    selector: 'italy [name$="tower"], japan [name$="tower"]',
     isCompleted: false,
     code: `
-      <country>
-        <colosseum></colosseum>
-        <pisa-tower></pisa-tower>
-      </country>
-      <country name="france">
-        <pantheon></pantheon>
-        <louvre></louvre>
-      </country>
-      <country name="china">
-        <forbidden-city></forbidden-city>
-        <great-wall-of-china></great-wall-of-china>
-      </country>
+      <italy>
+        <attraction name="colosseum"></attraction>
+        <attraction name="pisa-tower"></pisa-tower>
+      </italy>
+      <france>
+        <attraction name="eiffel-tower"></attraction>
+        <attraction name="louvre"></louvre>
+      </france>
+      <japan>
+        <attraction name="fuji-mountain"></attraction>
+        <attraction name="tokyo-tower"></attraction>
+      </japan>
       `
   },
   {
     id: 8,
     title: 'Similar endings of city names',
     description: 'You have to select attractions that city name ends "n"',
-    selector: '[city$="n"]',
+    selector: 'attraction[city$="n"]',
     isCompleted: false,
     code: `
-      <brandenburg-gate city="berlin"></brandenburg-gate>
-      <eiffel-tower city="paris"></eiffel-tower>
-      <burj-al-arab city="dubai"></burj-al-arab>
-      <big-ben city="london"></big-ben>
-      <gherkin city="london"></gherkin>
+      <attraction name="brandenburg-gate" city="berlin"></attraction>
+      <bridge name="tower-bridge" city="london"></bridge>
+      <attraction name="eiffel-tower" city="paris"></attraction>
+      <attraction name="big-ben" city="london"></attraction>
+      <attraction name="gherkin" city="london"></attraction>
       `
   },
   {
     id: 9,
-    title: 'Towers',
-    description: 'You have to select only towers',
-    selector: 'tower:nth-child(2n+1)',
+    title: 'Even attractions',
+    description: 'You have to select only even attractions',
+    selector: 'attraction:nth-child(2n)',
     isCompleted: false,
     code: `
-      <towers>
-        <tower>
-          <cn-tower></cn-tower>
-        </tower>
-        <tower>
-          <stonehenge></stonehenge>
-        </tower>
-        <tower>
-          <pisa-tower></pisa-tower>   
-        </tower>
-        <tower>
-          <fuji-mountain></fuji-mountain>   
-        </tower>
-        <tower>
-          <eiffel-tower></eiffel-tower>
-        </tower>
-        <tower>
-          <christ-the-redeemer></christ-the-redeemer>
-        </tower>
-        <tower>
-          <tokyo-tower></tokyo-tower>
-        </tower>
-      </towers>
+        <attraction name="cn-tower"></attraction>
+        <attraction name="stonehenge"></attraction>   
+        <attraction name="fuji-mountain"></attraction>
+        <attraction name="tokyo-tower"></attraction>
+        <attraction name="christ-the-redeemer"></attraction>
       `
   },
   {
     id: 10,
     title: 'Ancient',
-    description: 'You have to select not rotated elements',
-    selector: ':not(.rotated)',
+    description: 'You have to select not rotated attractions',
+    selector: 'attraction:not(.rotated)',
     isCompleted: false,
     code: `
-      <athena></athena>
-      <wat-phra-kaew class="rotated"></wat-phra-kaew>
-      <sphinx></sphinx>
-      <wat-phra-kaew></wat-phra-kaew>
-      <aztec-pyramid></aztec-pyramid>
+      <attraction name="athena"></attraction>
+      <attraction name="wat-phra-kaew" class="rotated"></attraction>
+      <pyramid name="aztec-pyramid"></pyramid>
+      <attraction name="sphinx"></attraction>
+      <attraction name="wat-phra-kaew"></attraction>
       `
   }
 ];

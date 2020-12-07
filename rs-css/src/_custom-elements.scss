@@ -14,251 +14,251 @@
     transform: rotate(25deg);;
 }
 
-country, usa, tower {
+italy, japan, france, usa {
     border: 0.25rem solid #424242;
 }
 
-arc-de-triomphe {
+[name="arc-de-triomphe"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/arc-de-triomphe.svg');
 }
 
-athena {
+[name="athena"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/athena.svg');
 }
 
-aztec-pyramid {
+[name="aztec-pyramid"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/aztec-pyramid.svg');
 }
 
-big-ben {
+[name="big-ben"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/big-ben.svg');
 }
 
-borobudur {
+[name="borobudur"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/borobudur.svg');
 }
 
-brandenburg-gate {
+[name="brandenburg-gate"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/brandenburg-gate.svg');
 }
 
-budapest {
+[name="budapest"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/budapest.svg');
 }
 
-burj-al-arab {
+[name="burj-al-arab"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/burj-al-arab.svg');
 }
 
-cathedral-of-saint-basil {
+[name="cathedral-of-saint-basil"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/cathedral-of-saint-basil.svg');
 }
 
-christ-the-redeemer {
+[name="christ-the-redeemer"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/christ-the-redeemer.svg');
 }
 
-cloud-gate {
+[name="cloud-gate"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/cloud-gate.svg');
 }
 
-cn-tower {
+[name="cn-tower"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/cn-tower.svg');
 }
 
-colosseum {
+[name="colosseum"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/colosseum.svg');
 }
 
-easter-island {
+[name="easter-island"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/easter-island.svg');
 }
 
-eiffel-tower {
+[name="eiffel-tower"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/eiffel-tower.svg');
 }
 
-forbidden-city {
+[name="forbidden-city"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/forbidden-city.svg');
 }
 
-fuji-mountain {
+[name="fuji-mountain"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/fuji-mountain.svg');
 }
 
-gateway-arch {
+[name="gateway-arch"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/gateway-arch.svg');
 }
 
-gherkin {
+[name="gherkin"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/gherkin.svg');
 }
 
-great-wall-of-china {
+[name="great-wall-of-china"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/great-wall-of-china.svg');
 }
 
-kaaba {
+[name="kaaba"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/kaaba.svg');
 }
 
-kinderdijk-windmills {
+[name="kinderdijk-windmills"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/kinderdijk-windmills.svg');
 }
 
-london-eye {
+[name="london-eye"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/london-eye.svg');
 }
 
-louvre {
+[name="louvre"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/louvre.svg');
 }
 
-merlion {
+[name="merlion"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/merlion.svg');
 }
 
-monas {
+[name="monas"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/monas.svg');
 }
 
-obelisk {
+[name="obelisk"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/obelisk.svg');
 }
 
-pagoda {
+[name="pagoda"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/pagoda.svg');
 }
 
-pantheon {
+[name="pantheon"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/pantheon.svg');
 }
 
-petra {
+[name="petra"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/petra.svg');
 }
 
-pisa-tower {
+[name="pisa-tower"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/pisa-tower.svg');
 }
 
-pyramid {
+[name="pyramid"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/pyramid.svg');
 }
 
-rialto-bridge {
+[name="rialto-bridge"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/rialto-bridge.svg');
 }
 
-san-francisco {
+[name="san-francisco"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/san-francisco.svg');
 }
 
-seoul-tower {
+[name="seoul-tower"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/seoul-tower.svg');
 }
 
-space-needle {
+[name="space-needle"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/space-needle.svg');
 }
 
-sphinx {
+[name="sphinx"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/sphinx.svg');
 }
 
-statue-of-liberty {
+[name="statue-of-liberty"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/statue-of-liberty.svg');
 }
 
-stockholm {
+[name="stockholm"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/stockholm.svg');
 }
 
-stonehenge {
+[name="stonehenge"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/stonehenge.svg');
 }
 
-sydney-opera-house {
+[name="sydney-opera-house"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/sydney-opera-house.svg');
 }
 
-taj-mahal {
+[name="taj-mahal"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/taj-mahal.svg');
 }
 
-tokyo-tower {
+[name="tokyo-tower"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/tokyo-tower.svg');
 }
 
-torii {
+[name="torii"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/torii.svg');
 }
 
-tower-of-ejer-bavnehoj {
+[name="tower-of-ejer-bavnehoj"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/tower-of-ejer-bavnehoj.svg');
 }
 
-tower-bridge {
+[name="tower-bridge"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/tower-bridge.svg');
 }
 
-twin-towers {
+[name="twin-towers"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/twin-towers.svg');
 }
 
-washington-monument {
+[name="washington-monument"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/washington-monument.svg');
 }
 
-wat-phra-kaew {
+[name="wat-phra-kaew"] {
     @extend %element;
     background-image: url('./assets/img/landmarks-monuments/wat-phra-kaew.svg');
 }
