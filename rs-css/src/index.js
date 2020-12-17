@@ -1,5 +1,5 @@
 import './style.scss';
-import View from './view';
+import View from './views/view';
 import Model from './model';
 import Controller from './controller';
 
