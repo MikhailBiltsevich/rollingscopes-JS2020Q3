@@ -1,0 +1,17 @@
+.state {
+  &__row {
+    margin: 5px;
+  }
+  &__tests {
+    color:  $tests-color;
+  }
+  &__deaths, &__country {
+    color: $white-color;
+  }
+  &__recovered {
+    color:  $recovered-color;
+  }
+  &__city {
+    color: darken($text-color, 10%);
+  }
+}

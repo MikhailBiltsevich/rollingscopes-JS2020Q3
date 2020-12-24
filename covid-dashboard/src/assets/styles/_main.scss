@@ -1,0 +1,29 @@
+.main {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "global map info"
+    "country map info"
+    "country map chart"
+    "footer footer footer";
+  grid-template-rows: 40px 90px 1fr 1fr 40px;
+  grid-template-columns: 17% 1fr 30%;
+  grid-gap: 10px;
+  margin: 10px;
+  min-height: 98%;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    grid-template-areas:
+    "header"
+    "global"
+    "country"
+    "map"
+    "info"
+    "chart"
+    "footer";
+    grid-template-rows: 1fr 1fr 300px 450px 300px 300px 1fr;
+    grid-template-columns: 1fr;
+  }
+}

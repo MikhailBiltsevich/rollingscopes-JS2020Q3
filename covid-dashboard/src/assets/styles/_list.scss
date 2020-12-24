@@ -1,0 +1,12 @@
+.list {
+  &__item {
+    padding: 5px;
+    cursor: pointer;
+    align-items: center;
+    margin: 0;
+    border-bottom: 1px solid $hr-color;
+    &.active {
+      background-color: $active-color;
+    }
+  }
+}

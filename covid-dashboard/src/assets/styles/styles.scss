@@ -1,0 +1,26 @@
+@import '~normalize.css';
+@import 'variables';
+@import 'main';
+@import 'block';
+@import 'amount';
+@import 'list';
+@import 'country';
+@import 'state';
+@import 'btn-full';
+@import 'control';
+@import 'link';
+@import 'footer';
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  color: $text-color;
+  background-color: $body-bg;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

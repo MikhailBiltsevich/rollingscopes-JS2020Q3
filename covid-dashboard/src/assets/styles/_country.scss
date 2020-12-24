@@ -1,0 +1,20 @@
+.country {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__sick {
+    font-size: 18px;
+    font-weight: bold;
+    color: $primary-color;
+  }
+  &__name {
+    flex-grow: 3;
+    margin-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    color: darken($text-color, 10%);
+  }
+  &__flag {
+    width: 30px;
+  }
+}

@@ -1,0 +1,123 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border: 1px solid $border-color;
+  background-color: $block-bg;
+  z-index: 1;
+
+  &__header {
+    margin: 5px;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__logo {
+    margin: 5px;
+    width: 30px;
+  }
+
+  &__search {
+    padding: 8px;
+    margin: 5px;
+    background-color: $block-bg;
+    border: 1px solid $border-color;
+    color: $text-color;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+
+    &::-webkit-scrollbar {
+      width: 7px;
+      background: $scroll-bar;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: $scroll-bar;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $scroll-thumb;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: $body-bg;
+    border: 1px solid $body-bg;
+    border-top: 1px solid $border-color;
+    margin: -1px;
+  }
+
+  &__tab {
+    cursor: pointer;
+    font-size: $font-size-base - 1px;
+    background-color: $body-bg;
+    border: 1px solid $border-color;
+    color: $text-color;
+    margin: -1px 5px 5px;
+    padding: 8px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.active {
+      background-color: $block-bg;
+      border-top: 1px solid $block-bg;
+      border-bottom: 2px solid $active-color;
+    }
+  }
+
+  &:hover .btn-full {
+    display: flex;
+  }
+}
+
+#top {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-area: header;
+
+  .block__header {
+    margin-left: 10px;
+  }
+}
+
+#global {
+  grid-area: global;
+}
+
+#country {
+  grid-area: country;
+}
+
+#map {
+  grid-area: map;
+  background-color: $map-bg;
+}
+
+#info {
+  grid-area: info;
+}
+
+#chart {
+  grid-area: chart;
+}
+
+#footer {
+  grid-area: footer;
+}

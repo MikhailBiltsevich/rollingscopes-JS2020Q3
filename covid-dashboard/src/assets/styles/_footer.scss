@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  &__copyright {
+    display: flex;
+    align-items: center;
+  }
+  &__github {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    &__copyright, &__github {
+      margin: 5px 0px;
+    }
+  }
+}

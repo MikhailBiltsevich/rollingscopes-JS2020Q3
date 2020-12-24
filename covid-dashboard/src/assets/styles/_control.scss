@@ -1,0 +1,34 @@
+.control {
+  display: none;
+}
+
+#block-global:checked ~ #global,
+#block-country:checked ~ #country,
+#block-map:checked ~ #map,
+#block-info:checked ~ #info,
+#block-chart:checked ~ #chart {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  & .btn-full {
+    background: url(../icons/full-close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+#block-global:checked ~ #global {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .block__content {
+    height: auto;
+  }
+  .amount {
+    font-size: $font-size-base * 8;
+    font-weight: bold;
+  }
+}

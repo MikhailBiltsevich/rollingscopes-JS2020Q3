@@ -1,0 +1,17 @@
+.btn-full {
+  display: none;
+  position: absolute;
+  background: url(../icons/full-open.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  right: -5px;
+  top: -5px;
+  border: 1px solid $text-color;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
