@@ -2,6 +2,9 @@ import createDeathComponent from './deaths/deaths.block';
 
 import './assets/styles/styles.scss';
 
+// Chart script snd styles
+import getResponse from './components/chart/script';
+
 import SearchInput from './views/SearchInput';
 import CountryListItem from './views/CountryListItem';
 import CountryList from './views/CountryList';
@@ -15,6 +18,7 @@ import TabsBlock from './views/TabsBlock';
 import Tab from './views/Tab';
 
 // createDeathComponent();
+
 STORAGE.bindInitialized(() => {
   const items = STORAGE.countries.filter((country) => country.summaryStat).map(
     (country) => new CountryListItem(country),
@@ -40,6 +44,7 @@ document.querySelector('#country .block__tabs').addEventListener('click', (event
 });
 
 STORAGE.bindInitialized(() => { createDeathComponent(STORAGE); });
+STORAGE.bindTargetCountryChanged(() => { getResponse(STORAGE); });
 STORAGE.bindTargetCountryChanged(() => { createDeathComponent(STORAGE); });
 
 STORAGE.init();

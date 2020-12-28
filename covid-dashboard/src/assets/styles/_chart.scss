@@ -1,0 +1,43 @@
+.chart {
+  &__canvas {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+  }
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+  }
+  &__btn {
+    border: none;
+    background-color: $block-bg;
+    outline: none;
+    cursor: pointer;
+    &::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+      width: 0;
+      height: 0;
+    }
+    &--next {
+      &::before {
+        border-top: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid $text-color;
+      }
+    }
+    &--prev {
+      &::before {
+        border-top: 8px solid transparent;
+        border-left: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid $text-color;
+      }
+    }
+  }
+}
