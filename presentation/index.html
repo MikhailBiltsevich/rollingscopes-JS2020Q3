@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Introducing TypeScript</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>Introducing TypeScript</h2>
+				<aside class="notes">
+					Title
+				</aside>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					## What is the TypeScript?
+					
+					TypeScript is an open-source language which builds on JavaScript, one of the world’s most used tools, by adding static type definitions.
+					
+					***TypeScript saves you time catching errors and providing fixes before you run code.***
+					<aside class="notes">
+						TypeScript is a programming language with static type definition. It compiles in JS.
+					</aside>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					## Topics
+					- Types by Inference
+					- Defining Types
+					- Composing Types
+						- Unions
+						- Generics
+					- Structural Type System
+					<aside class="notes">
+						There are topics in this slides.
+					</aside>
+				</textarea>
+			</section>
+			<section>
+				<section>
+					<h2>Types by Inference</h2>
+					<aside class="notes">Topic's title</aside>
+				</section>
+				<section>
+					<div>TypeScript knows the JavaScript language and will generate types for you in many cases. For example in
+						creating a variable and assigning it to a particular value, TypeScript will use the value as its type.</div>
+					<pre>
+		<code>
+	let helloWorld = "Hello World";
+	//  ^ = let helloWorld: string
+		</code>
+		<aside class="notes">About static types and defined type by assigned value.</aside>
+	</pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Defining Types</h2>
+					<aside class="notes">Topic's title</aside>
+				</section>
+				<section>
+					You can use a wide variety of design patterns in JavaScript. However, some design patterns make it difficult
+					for types to be inferred automatically (for example, patterns that use dynamic programming). To cover these
+					cases, TypeScript supports an extension of the JavaScript language, which offers places for you to tell
+					TypeScript what the types should be.
+					<aside class="notes">
+						About intefraces.
+					</aside>
+				</section>
+				<section>
+					<h2>JavaScript</h2>
+					<pre>
+						<code>
+	const user = {
+		name: "Hayes",
+		id: 0,
+	};
+					</code>
+				</pre>
+				<aside class="notes">JS Example</aside>
+				</section>
+				<section>
+					<h2>TypeScript</h2>
+					<pre>
+						<code>
+	interface User {
+		name: string;
+		id: number;
+	}
+
+	const user: User = {
+		name: "Hayes",
+		id: 0,
+	};
+					</code>
+				</pre>
+				<aside class="notes">TS Example</aside>
+				</section>
+				<section>
+					<div>You can use interfaces to annotate parameters and return values to functions:</div>
+					<pre>
+						<code>
+	function getAdminUser(): User {
+		//...
+	}
+	
+	function deleteUser(user: User) {
+		// ...
+	}
+					</code>
+				</pre>
+				<aside class="notes">About expecting that function return value by concrete type</aside>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Composing Types</h2>
+					<aside class="notes">Topic's title</aside>
+				</section>
+				<section>
+					<h3>Unions</h3>
+					<div>A popular use-case for union types is to describe the set of strings or numbers literal that a value is
+						allowed to be:</div>
+					<pre>
+							<code>
+	type WindowStates = "open" | "closed" | "minimized";
+	type LockStates = "locked" | "unlocked";
+	type OddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
+						</code>
+					</pre>
+					<aside class="notes">Unions</aside>
+				</section>
+				<section>
+					<h3>Generics</h3>
+					<div>Generics provide variables to types. A common example is an array. An array without generics could
+						contain anything. An array with generics can describe the values that the array contains.</div>
+					<pre>
+							<code>
+	type StringArray = Array&lt;string&gt;;
+	type NumberArray = Array&lt;number&gt;;
+	type ObjectWithNameArray = Array&lt;{ name: string }&gt;;
+						</code>
+					</pre>
+					<aside class="notes">Generics</aside>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Structural Type System</h2>
+					<aside class="notes">Topic's title</aside>
+				</section>
+				<section>
+					<div>One of TypeScript’s core principles is that type checking focuses on the <em>shape</em> that values have.
+						This is sometimes called “duck typing” or “structural typing”. In a structural type
+						system, if two objects have the same shape, they are considered to be of the same type.</div>
+						<aside class="notes">Description. Types with the same shape (inner structure or values) are equal</aside>
+				</section>
+				<section>
+					<pre>
+						<code>
+interface Point {
+	x: number;
+	y: number;
+}
+					</code>
+				</pre>
+
+					<pre>
+					<code>
+class VirtualPoint {
+	x: number;
+	y: number;
+
+	constructor(x: number, y: number) {
+		this.x = x;
+		this.y = y;
+	}
+}
+					</code>
+				</pre>
+				<aside class="notes">Equal types</aside>
+				</section>
+			</section>
+
+			<section>
+				<h2>References</h2>
+				<a href="https://www.typescriptlang.org/" target="_blank">typescriptlang.org - official page</a>
+				<br>
+				<a href="https://www.typescriptlang.org/docs">TypeScript documentation</a>
+				<br>
+				<a href="https://www.typescriptlang.org/play">Playground</a>
+				<aside class="notes">Some links</aside>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
